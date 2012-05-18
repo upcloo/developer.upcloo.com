@@ -1,0 +1,85 @@
+layout: default.twig
+---
+<div class="content">
+    <section>
+        <div class="row">
+            <div class="span14">
+                <h3 class="">Discover how is simple to integrate UpCloo 
+                services into your existing applications</h3>
+                <p>UpCloo is provided with a large set of SDKs and Plugins</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="span8">
+                <pre class="prettyprint linenums">
+    // Retrive the manager
+    $manager = UpCloo_Manager::getInstance();
+    $manager->index(array(...)); // Index contents
+    $results = $manager->ger("id"); // Retrive contents
+                </pre>
+            </div>
+            <div class="span6">
+                <p>
+                    All UpCloo SDKs are designed around
+                    the Singleton pattern. This particular
+                    strategy allows you to get the UpCloo
+                    manager everywhere into your code and
+                    stay focused on your business logic
+                </p>
+            </div>
+            <div class="span14">
+                <p>
+                    Serveral application plugins are designed for using
+                    UpCloo services. Starting for WordPress, Joomla! to
+                    Liferay. 
+                </p>
+            </div>
+            <div class="span14">
+                <p>
+                    Also mobile SDKs are available for UpCloo services.
+                    Actually iOS and Android application can use a 
+                    dedicated library for integrating UpCloo services.   
+                </p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="span14">
+                <p><span class="label label-info">Heads up</span> Obviously you can use a simple 
+                <code>XML REST</code> service for get your UpCloo integration.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="span14">
+                <h3>Searches in the cloud now is more simple</h3>
+                <p>
+                    UpCloo has a dedicated searching system.
+                </p>
+            </div>
+            <div class="span8">
+                <pre class="prettyprint linenums">
+$searchQuery = $manager->search()->query("search this");
+$manager->get($searchQuery);</pre>
+            </div>
+            <div class="span6">
+                <p>
+                    If you are looking for something into your dedicated
+                    index, you have to create a valid query using <code>search</code>
+                    method and request for results using <code>get</code> method.  
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span14">
+                <p>
+                    You can follow UpCloo <a href="http://www.upcloo.com">here</a>
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
