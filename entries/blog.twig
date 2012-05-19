@@ -16,12 +16,13 @@ providers:
             </div>
             <div class="span8">
             {% for entry in this.providers.blog %}
-                <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
-                <p><small>{{ entry.author }} - {{ entry.pubDate }}</small></p>
-                <p>
-                    {{ entry.summary }}
-                </p>
-                <p><a target="_blank" href="{{ entry.link }}">Read more...</a></p>
+                <div class="span8" style="margin: 5px 0 5px;">
+                    <div class="posted-date date-box">
+                        <span class="month">{{ entry.month }}</span>
+                        <span class="day">{{ entry.day }}</span>
+                    </div>
+                    <a target="_blank" href="{{ entry.link }}">{{ entry.title }}</a>
+                </div>
             {% endfor %}
             </div>
             <div class="span4">
