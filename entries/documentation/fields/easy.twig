@@ -1,0 +1,19 @@
+<div class="content">
+    <div class="row">
+        <div class="span14">
+            <h3>{{ this.providers.fieldSpec.name|upper }} Field specification.</h3>
+            <p>
+                The <code>{{ this.providers.fieldSpec.syntax }}</code> field is: 
+                <strong>{{ this.providers.fieldSpec.usage }}</strong>.
+            </p>
+            <p>{{ this.providers.fieldSpec.description }}</p>
+            <p>
+                This field is typed as a <strong>{{ this.providers.fieldSpec.type }}</strong>. 
+                {{ this.providers.fieldSpec.notes }}
+            </p>
+            <p>
+                This field must appear {{ this.providers.fieldSpec.multiplicity }}.
+            </p>
+        </div>
+    </div>
+</div>
