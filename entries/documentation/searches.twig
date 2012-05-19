@@ -10,9 +10,9 @@ permalink: /documentation/searches
             <ul>
                 <li><a href="#highlight">Highlight</a></li>
                 <li><a href="#network">Network</a></li>
-                <li>Facets</li>
-                <li>Ranges</li>
-                <li>Filters</li>
+                <li><a href="#filters">Filters</a></li>
+                <li><a href="#facets">Facets</a></li>
+                <li><a href="#ranges">Ranges</a></li>
             </ul>
         </div>
     </div>
@@ -30,7 +30,8 @@ response:
  - intel &lt;strong&gt;queries&lt;/strong&gt; &lt;strong&gt;core&lt;/strong&gt; </pre>
         </div>
         <div class="span6">
-            The UpCloo "engine" highlight words handling by it self plural forms.
+            <p>The UpCloo "engine" highlight words handling by it self plural forms.</p>
+            <p><small>UpCloo talks with you in XML. This representation is only a simple example.</small></p>
         </div>
     </div>
     <div class="row">
@@ -48,4 +49,54 @@ response:
     		</p>
     	</div>
     </div>
+    <div class="row">
+    	<div class="span14">
+    		<h1 id="facets">Filters</h1>
+    		<p>
+    			Filter is the <code>where</code> statement for UpCloo Search.
+    			Everytime you have to filter your result set use this feature.
+    			A common filter request is on <code>tags</code>, <code>categories</code>
+    			and other fields you similiar properties. A request is a simple
+    			<code>key, value</code> that implies the field to filter and
+    			the value that it has.
+    		</p>
+    		<p>
+    			<small>UpCloo handle no more that 5 filter in one request.</small>
+    		</p>
+		</div>
+	</div>
+    <div class="row">
+    	<div class="span14">
+    		<h1 id="facets">Facets</h1>
+    		<p>
+    			Faceting is a useful feature of UpCloo that's allow you to search for
+    			something and create groups for your query. In simple words UpCloo group
+    			and count using your <code>categories</code>, <code>tags</code> etc.
+    		</p>
+    	</div>
+    	<div class="span8">
+			<pre class="prettyprint">
+news (1234)
+posts (543)
+green computing (1)</pre>
+			<p>
+				
+			</p>
+		</div>
+		<div class="span6">
+			<p>UpCloo group and count using <code>fields</code> that you request.</p>
+			<p>UpCloo reply with labels that has al least one content.</p>
+		</div>
+		<div class="span14">
+			<p>Using a facet is simple, request the same query adding a filter.</p>
+		</div>
+    </div>
+    <div class="row">
+    	<div class="span14">
+    		<h1 id="ranges">Ranges</h1>
+    		<p>
+    			
+    		</p>
+		</div>
+	</div>
 </div>

@@ -21,11 +21,9 @@ layout: default.twig
         <div class="row">
             <div class="span8">
                 <pre class="prettyprint linenums">
-    // Retrive the manager
-    $manager = UpCloo_Manager::getInstance();
+    $manager = UpCloo_Manager::getInstance(); // Retrive the manager
     $manager->index(array(...)); // Index contents
-    $results = $manager->ger("id"); // Retrive contents
-                </pre>
+    $results = $manager->get("id"); // Retrive contents</pre>
             </div>
             <div class="span6">
                 <p>
