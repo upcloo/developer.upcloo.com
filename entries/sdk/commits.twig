@@ -1,0 +1,5 @@
+<ul>
+{% for commit in this.providers.commits %}
+    <li><a target="_blank" href="https://github.com/commit/upcloo-wordpress-plugin/commit/{{ commit.commit.tree.url }}">{{ commit.commit.message }}</a></li>
+{% endfor %}
+</ul>
