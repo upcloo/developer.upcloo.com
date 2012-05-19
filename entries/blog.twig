@@ -1,10 +1,40 @@
 permalink: blog/
+providers:
+    blog:
+        provider: Blog
 ---
 <div class="content">
     <section>
         <div class="row">
             <div class="span12">
-                <p>Welcome to blog...</p>
+                <h1>Blog</h1>
+                <p>
+                    UpCloo is a cloud based and fully hosted
+                    indexing engine that helps you to create incredible
+                    and automatic correlations between contents of your website.
+                </p>
+            </div>
+            <div class="span8">
+            {% for entry in this.providers.blog %}
+                <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
+                <p><small>{{ entry.author }} - {{ entry.pubDate }}</small></p>
+                <p>
+                    {{ entry.summary }}
+                </p>
+                <p><a target="_blank" href="{{ entry.link }}">Read more...</a></p>
+            {% endfor %}
+            </div>
+            <div class="span4">
+                <h4>Search (UpCloo Search)</h4>
+                <form method="post" action="http://www.walterdalmut.com/">
+                    <input type="text" class="span3" placeholder="Search" />
+                </form>
+                <h4>Useful links</h4>
+                <ul>
+                    <li><a target="_blank" href="http://www.corley.it">Corley.it</a></li>
+                    <li><a target="_blank" href="http://www.upcloo.com">UpCloo.com</a></li>
+                    <li><a target="_blank" href="https://www.github.com/corley">Corley on GitHUB</a></li>
+                </ul>
             </div>
         </div>
     </section>
