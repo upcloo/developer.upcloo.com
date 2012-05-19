@@ -1,3 +1,12 @@
+providers:
+    sdk:
+        provider: Sdk
+        platform: wordpress
+        issues: https://api.github.com/repos/corley/upcloo-wordpress-plugin/issues
+    commits:
+        provider: Commit
+        api: https://api.github.com/repos/corley/upcloo-wordpress-plugin/commits
+---
 <div class="content">
     <section>
         <div class="row">
@@ -8,8 +17,16 @@
                     UpCloo services. 
                 </p>
             </div>
+            <div class="span6">
+                <h2>Issues list</h2>
+                {% include 'issues.twig' %}
+            </div>
+            <div class="span6">
+                <h2>Latest Updates</h2>
+                {% include 'commits.twig' %}
+            </div>
             <div class="span6" id="download">
-                <p>Useful links</p>
+                <h2>Useful links</h2>
                 <ul>
                     <li>Archives: <a target="_blank" href="https://github.com/corley/upcloo-wordpress-plugin/downloads">Download</a></li>
                     <li>Source code: <a target="_blank" href="https://github.com/corley/upcloo-wordpress-plugin">UpCloo WordPress Plugin.</a></li>

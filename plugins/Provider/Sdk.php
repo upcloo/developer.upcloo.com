@@ -8,7 +8,10 @@ implements \Phrozn\Provider
     private $_map = array(
         'php' => array(
             'issues' => array()
-        )        
+        ),
+        'wordpress' => array(
+            'issues' => array()
+        )      
     );
     
     public function get()
