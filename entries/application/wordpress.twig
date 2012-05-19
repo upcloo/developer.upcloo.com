@@ -25,21 +25,7 @@ providers:
                 <h2>Latest Updates</h2>
                 {% include 'commits.twig' %}
             </div>
-            <div class="span6" id="download">
-                <h2>Useful links</h2>
-                <ul>
-                    <li>Archives: <a target="_blank" href="https://github.com/corley/upcloo-wordpress-plugin/downloads">Download</a></li>
-                    <li>Source code: <a target="_blank" href="https://github.com/corley/upcloo-wordpress-plugin">UpCloo WordPress Plugin.</a></li>
-                    <li>Tags: <a target="_blank" href="https://github.com/corley/upcloo-wordpress-plugin/tags">Tag packages</a></li>
-                </ul>
-                <p>UpCloo WordPress Plugin is released under MIT license. <a href="/mit-license.html">See here</a></p>
-            </div>
-            <div class="span6">
-                <p>For any problem you can send a ticket using the tracker.<p>
-                <ul>
-                    <li><a target="_blank" href="https://github.com/corley/upcloo-wordpress-plugin/issues">Bug Tracker</a></li>
-                </ul>
-            </div>
+            {% include 'github.twig' %}
         </div>
     </section>
     <section>

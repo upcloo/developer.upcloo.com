@@ -22,21 +22,7 @@ providers:
                 <h2>Latest Updates</h2>
                 {% include 'commits.twig' %}
             </div>
-            <div class="span6" id="download">
-                <h2>Useful links</h2>
-                <ul>
-                    <li>Code tags: <a target="_blank" href="https://github.com/corley/upcloo-php-sdk/tags">Download</a></li>
-                    <li>Source code: <a target="_blank" href="https://github.com/corley/upcloo-php-sdk">UpCloo PHP SDK.</a></li>
-                    <li>Archives: <a target="_blank" href="https://github.com/corley/upcloo-php-sdk/downloads">PHAR packages</a></li>
-                </ul>
-                <p>UpCloo PHP SDK is released under MIT license. <a href="/mit-license.html">See here</a></p>
-            </div>
-            <div class="span6">
-                <p>For any problem you can send a tickey using the tracker.<p>
-                <ul>
-                    <li><a target="_blank" href="https://github.com/corley/upcloo-php-sdk/issues">Bug Tracker</a></li>
-                </ul>
-            </div>
+            {% include 'github.twig' %}
             <div class="span12">
                 <p>Now you are ready to use UpCloo PHP SDK.</p>
             </div>

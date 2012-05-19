@@ -7,10 +7,18 @@ implements \Phrozn\Provider
 {
     private $_map = array(
         'php' => array(
-            'issues' => array()
+            'issues' => array(),
+            'sourcecode' => 'https://github.com/corley/upcloo-php-sdk',
+            'tags' => 'https://github.com/corley/upcloo-php-sdk/tags',
+            'download' => 'https://github.com/corley/upcloo-php-sdk/downloads',
+            'issuesLink' => 'https://github.com/corley/upcloo-php-sdk/issues' 
         ),
         'wordpress' => array(
-            'issues' => array()
+            'issues' => array(),
+            'sourcecode' => 'https://github.com/corley/upcloo-wordpress-plugin',
+            'tags' => 'https://github.com/corley/upcloo-wordpress-plugin/tags',
+            'download' => 'https://github.com/corley/upcloo-wordpress-plugin/downloads',
+            'issuesLink' => 'https://github.com/corley/upcloo-wordpress-plugin/issues'
         )      
     );
     
