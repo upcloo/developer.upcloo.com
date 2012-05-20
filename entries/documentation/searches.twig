@@ -56,7 +56,7 @@ response:
     			Filter is the <code>where</code> statement for UpCloo Search.
     			Everytime you have to filter your result set use this feature.
     			A common filter request is on <code>tags</code>, <code>categories</code>
-    			and other fields you similiar properties. A request is a simple
+    			and other fields with similiar properties. A request is a simple
     			<code>key, value</code> that implies the field to filter and
     			the value that it has.
     		</p>
@@ -80,8 +80,8 @@ news (1234)
 posts (543)
 green computing (1)</pre>
 			<p>
-				
-			</p>
+    			
+    		</p>
 		</div>
 		<div class="span6">
 			<p>UpCloo group and count using <code>fields</code> that you request.</p>
@@ -90,13 +90,33 @@ green computing (1)</pre>
 		<div class="span12">
 			<p>Using a facet is simple, request the same query adding a filter.</p>
 		</div>
+		<div>
+		    <p><small>UpCloo handle no more that 5 filter in one request.</small></p>
+		</div>
     </div>
     <div class="row">
     	<div class="span12">
     		<h1 id="ranges">Ranges</h1>
     		<p>
-    			
+    			Ranges are quite complex, it was designed for create a complex operation.
+    			Ranges are valid only for <code>date</code> fields and <code>integers</code>
+    			and <code>decimal</code>.
     		</p>
+    		<p>
+    		    Suppose that you want to group results of a search by year. You can use a
+    		    <em>range</em> query indicating that the grain is a <code>YEAR</code> and
+    		    the reference field is the <code>publish_date</code>.
+    		</p>
+    		<p>
+    		    Range query tipically is created with five information.
+    		</p>
+    		<ul>
+    		    <li>field to use during group</li>
+    		    <li>the dimension of a group (year, month, etc.)</li>
+    		    <li>direction on a movement (move ahead (forward) from 0 to ...)</li>
+    		    <li>starting from</li>
+    		    <li>ends to</li>
+    		</ul>
 		</div>
 	</div>
 </div>
