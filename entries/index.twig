@@ -1,4 +1,7 @@
 layout: default.twig
+providers:
+    blog:
+        provider: Blog
 ---
 <div class="content">
     <header class="start">
@@ -38,80 +41,59 @@ layout: default.twig
                     Follow us on <a href="https://www.twitter.com/CorleyCloud">Twitter</a>
                     for get all the latest news on UpCloo.
                 </p>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="row">
-            <div class="span12">
-                <h3>UpCloo Correlation connects your contents together.</h3>
-            </div>
-            <div class="span6">
-                <pre class="prettyprint linenums">
-    $manager = UpCloo_Manager::getInstance(); // Retrive the manager
-    $manager->index(array(...)); // Index contents
-    $results = $manager->get("id"); // Retrive contents</pre>
-            </div>
-            <div class="span6">
                 <p>
-                    All UpCloo SDKs are designed around
-                    the Singleton pattern. This particular
-                    strategy allows you to get the UpCloo
-                    manager everywhere into your code and
-                    stay focused on your business logic
+                    Share this to your friend.
                 </p>
-            </div>
-            <div class="span12">
                 <p>
-                    Serveral application plugins are designed for using
-                    UpCloo services. Starting for WordPress, Joomla! to
-                    Liferay. 
-                </p>
-            </div>
-            <div class="span12">
-                <p>
-                    Also mobile SDKs are available for UpCloo services.
-                    Actually iOS and Android application can use a 
-                    dedicated library for integrating UpCloo services.   
-                </p>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="row">
-            <div class="span12">
-                <p><span class="label label-info">Heads up</span> Obviously you can use a simple 
-                <code>XML REST</code> service for get your UpCloo integration.</p>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="row">
-            <div class="span12">
-                <h3>Searches in the cloud now is more simple</h3>
-                <p>
-                    UpCloo has a dedicated searching system.
-                </p>
-            </div>
-            <div class="span6">
-                <pre class="prettyprint linenums">
-$searchQuery = $manager->search()->query("search this");
-$manager->get($searchQuery);</pre>
-            </div>
-            <div class="span6">
-                <p>
-                    If you are looking for something into your dedicated
-                    index, you have to create a valid query using <code>search</code>
-                    method and request for results using <code>get</code> method.  
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://developer.upcloo.com" data-via="CorleyCloud" data-related="CorleyCloud" data-count="none" data-hashtags="UpClooDevelopers">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 </p>
             </div>
         </div>
         <div class="row">
-            <div class="span12">
-                <p>
-                    You can follow UpCloo <a target="_blank" href="http://www.upcloo.com">here</a>
-                    or if you want on <a target="_blank" href="http://www.upcloo.com/twitter">twitter</a>
-                </p>
+            <div class="span6">
+                {% for entry in this.providers.blog %}
+                <div class="span6" style="margin: 5px 0 5px;">
+                    <div class="posted-date date-box">
+                        <span class="month">{{ entry.month }}</span>
+                        <span class="day">{{ entry.day }}</span>
+                    </div>
+                    <a target="_blank" href="{{ entry.link }}">{{ entry.title }}</a>
+                </div>
+            {% endfor %}
+                <div class="span6" style="margin-top: 36px">
+                    <p><a target="_blank" href="http://www.corley.it/blog">See all posts on Corley Blog...</a></p>
+                </div>
+            </div>
+            <div class="span6">
+                <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 4,
+  interval: 30000,
+  width: 'auto',
+  height: 300,
+  theme: {
+    shell: {
+      background: '#f1f1f1',
+      color: '#3d353d'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#1f1f1f',
+      links: '#915791'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    behavior: 'all'
+  }
+}).render().setUser('CorleyCloud').start();
+</script>
             </div>
         </div>
     </section>

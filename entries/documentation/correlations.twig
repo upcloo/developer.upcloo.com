@@ -1,0 +1,65 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>UpCloo Correlation</h1>
+            <p>
+                UpCloo Correlation is the service that links contents
+                together. With UpCloo correlation is possible to create
+                a list of various navigation aspect.
+            </p>
+        </div>
+        <div class="span12">
+            <h2>How it works</h2>
+            <p>
+                This service is really simple and has only three base operations.
+            </p>
+            <ul>
+                <li><code>index</code></li>
+                <li><code>get</code></li>
+                <li><code>delete</code></li>
+            </ul>
+            <p>
+                See this operation in detail.
+            </p>
+            <!-- Index operation -->
+            <h3>The INDEX operation</h3>
+            <p>
+                The <code>index</code> feature is the create or update an existing one
+                content. It's very simple to use, you have only to pass your data
+                model and UpCloo do the rest. 
+            </p>
+            <p>
+                During an index operation, UpCloo <strong>recreate</strong> a portion 
+                of it's internal structure for create always fresh links also into your 
+                old contents. The amount of contents that are updated are not know and 
+                it depends on UpCloo internal configuration.
+            </p>
+            <!-- Get operation -->
+            <h3>The GET operation</h3>
+            <p>
+                The <code>get</code> feature is also simple but it's allows to get
+                different aspects of UpCloo tree. What that means?<br>
+                Simple, if you use the <code>get</code> method directly, UpCloo create the
+                best correlation in a common way, based only on your texts. But if
+                you want to create a tree based only on a category? UpCloo handle 
+                <strong>virtual sitekeys</strong> that are only other aspects of
+                your base tree. Rules that creates these different aspects are defined
+                by yourself using the <a href="#">UpCloo manager portal</a>.
+            </p>
+            <!-- Delete Operation -->
+            <h3>The DELETE operation</h3>
+            <p>
+                The <code>delete</code> feature is very simple to use. It get the
+                content <a href="/documentation/fields/id.html">identification string</a>
+                and mark it for the deletion process. Delete feature is not a realtime
+                or quite realtime task. 
+            </p>
+            <p>
+                When you delete a content you generate a big hole into your tree.
+                UpCloo must fill this hole as soon as possible but the content that
+                you have removed it's also linked by other contents. For that reason
+                UpCloo must run through all contents and fix all holes with a 
+                <strong>new</strong> and <strong>valid</strong> content link.
+            </p>
+        </div>
+    </div>
