@@ -16,11 +16,11 @@ providers:
                 <p>&nbsp;</p>
             </div>
             <div class="span6">
-                <h2>Issues list</h2>
+                <h3>Issues list</h3>
                 {% include 'issues.twig' %}
             </div>
             <div class="span6">
-                <h2>Latest Updates</h2>
+                <h3>Latest Updates</h3>
                 {% include 'commits.twig' %}
             </div>
             {% include 'github.twig' %}
@@ -32,18 +32,22 @@ providers:
     <section class="sdk-sep">
         <div class="row">
             <div class="span12">
-                <h2>Setting up your credentials</h2>
+                <h2>Getting Started</h2>
+            </div>
+            <div class="span12">
+                <h3>Setting up your credentials</h3>
                 <p>
                     UpCloo SDKs is designed on Singleton pattern, for
                     more information around that design <a href="http://en.wikipedia.org/wiki/Singleton_pattern">see on wiki</a>. 
                 </p>
                 <pre class="prettyprint linenums">
-$manager = UpCloo_Manager::getInstance();</pre>
+$manager = UpCloo_Manager::getInstance();
+$manager->setCredential("username", "sitekey", "password");</pre>
                 <p>
                     The <code>$manager</code> variable contains a valid
                     UpCloo instance.
                 </p>
-                <h2>Send new contents to the Cloud</h2>
+                <h3>Send new contents to the Cloud</h3>
                 <p>
                     UpCloo SDK handle inserts and updates by it self.
                     You have only to request the content indexing. See on
@@ -138,7 +142,7 @@ $response = $manager->index(
                 </ul>
             </div>
             <div class="span12">
-                <h2>Retrive indexed contents</h2>
+                <h3>Retrive indexed contents</h3>
                 <p>
                     After a content indexing you can retrive it's correlation
                     using a <code>get</code> dedicated method.
