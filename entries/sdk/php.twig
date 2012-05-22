@@ -35,6 +35,30 @@ providers:
                 <h2>Getting Started</h2>
             </div>
             <div class="span12">
+                <h3>Load the library</h3>
+                <p>
+                    This library provides a simple autoloader.
+                </p>
+                <pre class="prettyprint linenums">
+require_once 'path/to/UpCloo/Autoloader.php';</pre>
+                <p>
+                    UpCloo Autoloader uses the classmap strategy for
+                    load all dependencies.
+                </p>
+                <p>
+                    UpCloo PHP SDK is PSR-0 ready and if you want you
+                    can use a PSR-0 Autolodaer instead uses the classmap.
+                    An example with <code>Zend_Loader_Autoloader</code>
+                    provided by Zend Framework (ZF)
+                </p>
+                <pre class="prettyprint linenums">
+$autoloader = Zend_Loader_Autoloader::getInstance();
+$autoloader->registerNamespace("UpCloo_");</pre>
+                <p>
+                    UpCloo SDK provides a section dedicated to 
+                    <a href="/documentation/sdk/php/zf.html">Zend Framework</a>
+                    for simplify the integration process.
+                </p>
                 <h3>Setting up your credentials</h3>
                 <p>
                     UpCloo SDKs is designed on Singleton pattern, for
@@ -142,6 +166,10 @@ $response = $manager->index(
                 </ul>
             </div>
             <div class="span12">
+                <p>For more information about UpCloo fields use the 
+                <a href="/documentation/#fields">base docs here</a></p>
+            </div>
+            <div class="span12">
                 <h3>Retrive indexed contents</h3>
                 <p>
                     After a content indexing you can retrive it's correlation
@@ -153,6 +181,170 @@ $correlations = $manager->get("content-id");</pre>
                     Retriving relations is very simple, you send the content
                     identification string and retrive the contents list.
                     UpCloo choose the best for you.
+                </p>
+            </div>
+            <div class="span12">
+                <h2>Local storage</h2>
+                <p>
+                    Using the local storage indicates that you can require 
+                    the indexing of a content without consider that this content 
+                    was already sent to UpCloo.
+                </p>
+                <p>
+                    UpCloo SDK provide a local storage for save indexing operation. 
+                    This storage simplify the recording operation for reduce your indexing requests.
+                </p>
+                <p>
+                    During your bootstrap request to use UpCloo local storage.
+                </p>
+                <pre class="prettyprint linenums">
+$manager->useStorage(dirname(__FILE__) . '/system/dbs/upcloo.sqlite');</pre>
+                <p>
+                    In the previous example we indicate that UpCloo must use a 
+                    storage located at path <code>/system/dbs</code> (from the bootstrap file position) 
+                    and the filename is <code>upcloo.sqlite</code>. 
+                    <em>If the storage doens't exists UpCloo SDK create it from scratch</em>.
+                </p>
+                <h3>Storage Structure</h3>
+                <p>
+                    The UpCloo storage system use a very simple structure. It store locally all contents 
+                    sent to the UpCloo indexer. In this way you can simplify the UpCloo integration.
+                </p>
+                <pre class="prettyprint linenums">
++==========================+
++      UpClooContents      +         
++==========================+
++    your_content_id_1     +
++--------------------------+
++    your_content_id_2     +
++--------------------------+
++    your_content_id_3     +
++--------------------------+</pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <h2>UpCloo Search</h2>
+                <p><em>UpCloo Search</em> is the search service for UpCloo.</p>
+                <p>
+                    Searches are very simple, you have to create a new <code>search</code>
+                    query and request for results. See it in an example:
+                </p>
+                <pre class="prettyprint linenums">
+// Create the query
+$searchQuery = $manager->search()->query("Text to search");
+
+// Request for results
+$results = $manager->get($searchQuery);</pre>
+                <p>
+                    Search results are quite similar to UpCloo correlation but is
+                    more complete and it returns all base fields plus all dynamic
+                    fields used during a content indexing.
+                </p>
+                <p>
+                    <em>
+                        Remember that UpCloo uses a NOSQL document store as a database
+                        for that reason apart base fields others are not declared and
+                        the system replies with these fields only if they exists.
+                    </em>
+                </p>
+                <h3>Complex queries</h3>
+                <p>
+                    Search queries works chaining objects. You can start a new query 
+                    using <code>search()</code> method.
+                </p>
+                <pre class="prettyprint linenums">
+$searchQuery = $manager->search()
+    ->relevancy() //Force date relevancy
+    ->query("Text to search")
+    ->facet("category")
+    ->range() //maybe much more complex
+    ->filterBy("category", "Web")
+    ->network("a-partner-sitekey")
+;
+
+$results = $manager->get($searchQuery);</pre>
+                <h4>Query</h4>
+                <p>
+                    The query is what you want to search, it could be a sentence 
+                    or simple a word but not empty.
+                </p>
+                <h4>Relevancy</h4>
+                <p>
+                    Relevancy is the boost operator that indicates that this query 
+                    must works with a relevancy on a particular rule. Possible 
+                    values actually are only: date and default.
+                </p>
+                <ul>
+                    <li>Date indicates that are better new contents (using 
+                    <code>publish_date</code> field)</li>
+                    <li>Default for a natural query execution.</li>
+                </ul>
+                <p>
+                    <em>
+                        <strong>Relevancy is not a sort operation.</strong> UpCloo
+                        use a particular boost on results for increase a content
+                        match using dates.
+                    </em>
+                </p>
+                <h4>Filter By</h4>
+                <p>
+                    This method indicates that you want to reduce your result set. You 
+                    can chain this operator.
+                </p>
+                <pre class="prettyprint linenums">
+$search->filterBy("category", "news")->filterBy("author", "Name Surname");</pre>
+                <h4>Facet</h4>
+                <p>
+                    Facet operator is the "group by" and "count". You can chain this operator.
+                </p>
+                <pre class="prettyprint linenums">
+$search->facet("category")->facet("author");</pre>
+                <h4>Network</h4>
+                <p>
+                    If you have a network of sites that you query not only your 
+                    repository but involves other partner indexes for having more 
+                    results. You can chain this operator.
+                </p>
+                <pre class="prettyprint linenums">
+$search->network("first")->network("second");</pre>
+                <p>
+                    Is not useful including your sitekey because the sistem involve 
+                    it by itself.
+                </p>
+                <h4>Ranges</h4>
+                <p>
+                    Range queries is a group and count with filter. It's a complex 
+                    query. When you are asking for a range query the system filter 
+                    results automatically on your range, after that group and 
+                    counting elements into each group. That's enabled your software 
+                    for move users into a fine grain searching system.
+                </p>
+                <p>
+                    Here the range method prototype
+                </p>
+                <pre class="prettyprint linenums">
+public function range($type=self::RANGE_DATE, 
+            $field="publish_date", 
+            $gap="1", 
+            $direction=self::DIRECTION_FORWARD, 
+            $from="1900-01-01T00:00:00Z", 
+            $to=self::NOW, 
+            $value=self::RANGE_DATE_YEAR);</pre>
+                <p>
+                    Using into a call
+                </p>
+                <pre class="prettyprint linenums">
+//Backward range query
+$searchQuery = $manager->search()
+    ->query("Text to search")
+    ->range("date", "publish_date", 2, "+", "2012-01-01T00:00:00Z", "NOW", "MONTH")
+    ->filterBy("category", "meteo")
+;
+
+$results = $manager->get($searchQuery);</pre>
+                <p>
+                    You can chain this operator.
                 </p>
             </div>
         </div>
