@@ -1,0 +1,74 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>UpCloo Docs</h1>
+        </div>
+    </div>
+    <div class="row" id="get">
+        <div class="span12">
+            <h2>INDEX - Create or update contents</h2>
+            <p>
+                Create new content or update an existing one is a simple 
+                operation on UpCloo. It uses the <code>POST</code> header
+                for indicates that you want to do create or update.
+                UpCloo handles by itself an update operation if the content
+                <code>ID</code> exits into the index or create a new 
+                document if missing.
+            </p>
+            <p>
+                UpCloo internally it's composed by a router. This router
+                is designed for put your content into a dedicated index.
+                The endpoint tipically is: <code>https://{username}.update.upcloo.com</code>
+            </p>
+            <p>
+                When you "post" a content you have to use the HTTP body
+                an pass a model request. The <code>model</code> is pretty
+                simple and it uses a flexible structure. The minimal
+                configuration is:
+            </p>
+            <pre class="prettyprint linenums">
+&lt;model&gt;
+    &lt;id&gt;my-id&lt;/id&gt;
+    &lt;sitekey&gt;my-sitekey&lt;/sitekey&gt;
+    &lt;password&gt;my-secret&lt;/password&gt;
+&lt;/model&gt;</pre>
+            <p>
+                Obviously for working properly UpCloo needs more than 
+                the content <code>ID</code>. You can choose how many
+                fields you want to create and pass to UpCloo indexer.
+                Tipically a good choice is:
+            </p>
+            <ul>
+                <li>title</li>
+                <li>summary</li>
+                <li>content</li>
+            </ul>
+            <p>
+                This fields tipically represent a tipical news website.
+            </p>
+            <p>
+                UpCloo approve, and it's highly recommended, to add lists
+                of tags and categories. A complete post example with
+                all of those fields is:
+            </p>
+            <pre class="prettyprint linenums">
+&lt;model&gt;
+    &lt;id&gt;my-id&lt;/id&gt;
+    &lt;sitekey&gt;my-sitekey&lt;/sitekey&gt;
+    &lt;password&gt;my-secret&lt;/password&gt;
+    &lt;title&gt;my title&lt;/title&gt;
+    &lt;summary&gt;this is my summary.&lt;/summary&gt;
+    &lt;content&gt;A very long content&lt;/content&gt;
+    &lt;tags&gt;
+        &lt;element&gt;tag 1&lt;/element&gt;
+        &lt;element&gt;tag 2&lt;/element&gt;
+        &lt;element&gt;tag 3&lt;/element&gt;
+    &lt;/tags&gt;
+    &lt;categories&gt;
+        &lt;element&gt;cat 1&lt;/element&gt;
+        &lt;element&gt;cat 2&lt;/element&gt;
+    &lt;/categories&gt;
+&lt;/model&gt;</pre>
+        </div>
+    </div>
+</div>

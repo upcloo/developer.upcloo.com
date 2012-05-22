@@ -1,0 +1,35 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>UpCloo Docs</h1>
+        </div>
+    </div>
+    <div class="row" id="get">
+        <div class="span12">
+            <h2>DELETE - Delete contents</h2>
+            <p>
+                Delete existing contents is a simple  
+                operation on UpCloo. It uses the <code>DELETE</code> header
+                for indicates that you want to remove contents.
+                UpCloo handles by itself the index tree regeneration.
+            </p>
+            <p>
+                UpCloo internally it's composed by a router. This router
+                is designed for put your content into a dedicated index.
+                The endpoint tipically is: <code>https://{username}.update.upcloo.com</code>
+            </p>
+            <p>
+                When you "delete" a content you have to use the HTTP body
+                an pass a model request. The <code>model</code> is pretty
+                simple and it uses a flexible structure. The minimal
+                configuration is:
+            </p>
+            <pre class="prettyprint linenums">
+&lt;model&gt;
+    &lt;id&gt;my-id&lt;/id&gt;
+    &lt;sitekey&gt;my-sitekey&lt;/sitekey&gt;
+    &lt;password&gt;my-secret&lt;/password&gt;
+&lt;/model&gt;</pre>
+        </div>
+    </div>
+</div>

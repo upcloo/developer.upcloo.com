@@ -20,13 +20,13 @@ providers:
             </div>
             <div class="span6">
                 <h2>Issues list</h2>
-                {% include 'issues.twig' %}
+                {% include '/../issues.twig' %}
             </div>
             <div class="span6">
                 <h2>Latest Updates</h2>
-                {% include 'commits.twig' %}
+                {% include '/../commits.twig' %}
             </div>
-            {% include 'github.twig' %}
+            {% include '/../github.twig' %}
         </div>
     </section>
     <section>
@@ -43,48 +43,6 @@ providers:
                 <p>
                     UpCloo create a new menu tree. Use that menu for handling your personal settings.
                 </p>
-            </div>
-        </div>
-    </section>
-    <section id="remote-importer">
-        <div class="row">
-            <div class="span12">
-                <h2>Enable remote importer</h2>
-                <p>
-                    At first time UpCloo have to move your contents into the 
-                    Corley Cloud system. For that reason you have to enable 
-                    the meta tag exposure system that show into your public 
-                    HTML page sensible information of your posts. In that way 
-                    the UpCloo spider can read information and import your 
-                    contents without any connection with your internal structure.
-                </p>
-                <p>For more information on remote importer <a href="/tools/remote-importer.html">see here</a></p>
-            </div>
-            <div class="span12">
-                <h3>Tag exposed</h3>
-                <p>
-                    UpCloo expose, if you enable it, a list of information
-                    that enable remote UpCloo daemons to crawl your website
-                    and get useful information for index generation.
-                </p>
-                <p>Minimal requirement:</p>
-                <pre class="prettyprint linenums">
-&lt;!-- UPCLOO_POST_ID post_1088 UPCLOO_POST_ID --&gt;
-&lt;!-- UPCLOO_POST_TITLE Zend\Di impressioni - ZF2 UPCLOO_POST_TITLE --&gt;</pre>
-                <p>
-                    A complex example:
-                </p>
-                <pre class="prettyprint linenums">
-&lt;!-- UPCLOO_POST_ID post_1088 UPCLOO_POST_ID --&gt;
-&lt;!-- UPCLOO_POST_TYPE post UPCLOO_POST_TYPE --&gt;
-&lt;!-- UPCLOO_POST_TITLE Zend\Di impressioni - ZF2 UPCLOO_POST_TITLE --&gt;
-&lt;!-- UPCLOO_POST_PUBLISH_DATE 2012-01-08T15:25:42Z UPCLOO_POST_PUBLISH_DATE --&gt;
-&lt;!-- UPCLOO_POST_AUTHOR Walter Dal Mut UPCLOO_POST_AUTHOR --&gt;
-&lt;!-- UPCLOO_POST_DYNAMIC_TAG_LIST me,you UPCLOO_POST_DYNAMIC_TAG_LIST --&gt;
-&lt;!-- UPCLOO_POST_DYNAMIC_TAG_ME one, two UPCLOO_POST_DYNAMIC_TAG_ME --&gt;
-&lt;!-- UPCLOO_POST_DYNAMIC_TAG_YOU one, two UPCLOO_POST_DYNAMIC_TAG_YOU --&gt;  
-&lt;!-- UPCLOO_POST_TAGS Dependency Injection,DiC,php,zend,Zend\Di,Zend_Di,zf2 UPCLOO_POST_TAGS --&gt;
-&lt;!-- UPCLOO_POST_CATEGORIES Applicazioni,PHP,Tests UPCLOO_POST_CATEGORIES --&gt;</pre>
             </div>
         </div>
     </section>

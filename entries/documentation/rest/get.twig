@@ -1,0 +1,65 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>UpCloo Docs</h1>
+        </div>
+    </div>
+    <div class="row" id="get">
+        <div class="span12">
+            <h2>GET - Retrive documents</h2>
+            <p>
+                Get from UpCloo index is pretty simple, you have to do a simple
+                HTTP get request specifing your <code>sitekey</code> and the 
+                <code>id</code> of content. UpCloo replies with a document with
+                a list of content correlates.
+            </p>
+            <p>
+                <code>http://repository.upcloo.com/{sitekey}/{id}.xml</code>
+            </p>
+            <p>
+                <pre class="prettyprint linesnum">
+&lt;docs&gt;
+    &lt;doc id="post_414" uid="xx00XXxxx_post_414_it_1" pubDate="2011-05-20T00:17:54Z"&gt;
+        &lt;title&gt;Prime delusioni AWS cluster micro&lt;/title&gt;
+        &lt;url&gt;
+            http://walterdalmut.com/2011/05/20/prime-delusioni/
+        &lt;/url&gt;
+        &lt;description&gt;
+            Questa mattina si é lavorato alla prima configurazione dell’architettura cluster 
+            che si vuole dedicare alla nuova produzione, ma purtroppo il taglio troppo ridotto 
+            delle EC2 scelto non ha portato ai risultati sperati, infatti il dimensionamento scelto 
+            non era all’altezza dei risultati desiderati.
+        &lt;/description&gt;
+        &lt;type&gt;post&lt;/type&gt;
+        &lt;image/&gt;
+        &lt;authors&gt;
+            &lt;author&gt;Walter Dal Mut&lt;/author&gt;
+        &lt;/authors&gt;
+        &lt;categories&gt;
+            &lt;category&gt;Cloud Computing&lt;/category&gt;
+        &lt;/categories&gt;
+        &lt;tags&gt;
+            &lt;tag&gt;amazon&lt;/tag&gt;
+            &lt;tag&gt;cloud computing&lt;/tag&gt;
+            &lt;tag&gt;cluster&lt;/tag&gt;
+            &lt;tag&gt;ec2&lt;/tag&gt;
+            &lt;tag&gt;rds&lt;/tag&gt;
+        &lt;/tags&gt;
+    &lt;/doc&gt;
+&lt;!-- other docs --&gt;
+&lt;/docs&gt;</pre>
+            </p>
+            <p>
+                If you have different <em>virtual sitekeys</em> you can retrive other
+                correlation aspects using a sub key. For do this task simple send
+                after the primary key. See an example: 
+                <code>http://repository.upcloo.com/{sitekey}/{vsitekey}/{id}.xml</code>
+            </p>
+            <p>
+                UpCloo firewalls limit get requests only to your dedicates ips.
+                If you want you can skip firewalls and allows all to get your
+                content correlations.
+            </p>
+        </div>
+    </div>
+</div>
