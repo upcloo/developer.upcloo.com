@@ -1,0 +1,87 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>Template Results using CSS</h1>
+            <p>
+                All elements are under the div having class: <code>upcloo-related-contents</code>.
+            </p>
+            <p>
+                The block of result start with a <code>div</code> tag with a fixed class <code>upcloo-related-contents</code> 
+                and inside this have the <code>h2</code> tag with the section title.
+            </p>
+            <pre class="prettyprint linenums">
+&lt;div class="upcloo-related-contents"&gt;
+    &lt;h2&gt;Forse ti potrebbero interessare:&lt;/h2&gt;
+    ... &lt;!-- Continue --&gt;
+&lt;/div&gt;</pre>
+            <p>
+                Each UpCloo element is embedded into a general template tag.
+            </p>
+            <pre class="prettyprint linenums">
+&lt;div class="upcloo_template_element"&gt;
+... &lt;!-- listed: title, image, tags, categories, summary --&gt;
+&lt;/div&gt;</pre>
+            <h2>Title Section</h2>
+            <p>
+                The <code>div</code> that contains the title have class: <code>upcloo_post_title</code>
+            </p>
+            <pre class="prettyprint linenums">
+&lt;div class="upcloo_post_title"&gt;
+    &lt;a href="http://yourdomain.ltd/a-link-to-content.html"&gt;
+        Your title - content
+    &lt;/a&gt;
+&lt;/div&gt;</pre>
+            <h2>Image section</h2>
+            <p>
+                The div that contains the image tag have class: <code>upcloo_post_image</code>
+            </p>
+            <p>
+                The image group have a link on the image tag that link with the content.
+            </p>
+            <pre class="prettyprint linenums">
+&lt;div class="upcloo_post_image"&gt;
+    &lt;a href="http://yourdomain.ltd/a-link-to-content.html"&gt;
+        &lt;img src="http://yourdomain.ltd/image.png" alt="image" /&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</pre>
+            <h2>Summary section</h2>
+            <p>
+                The div that contains the summary have class: <code>upcloo_post_summary</code>
+            </p>
+            <pre class="prettyprint linenums">
+&lt;div class="upcloo_post_summary"&gt;
+   &lt;!-- the summmary content --&gt;
+&lt;/div&gt;</pre>
+            <h2>General Example</h2>
+            <pre class="prettyprint linenums">
+&lt;div class="upcloo-related-contents"&gt;
+    &lt;h2&gt;Forse ti potrebbero interessare:&lt;/h2&gt;
+    
+    &lt;div class="upcloo_template_element"&gt;
+        &lt;div class="upcloo_post_image"&gt;
+            &lt;a href="http://yourdomain.ltd/link"&gt;
+                &lt;img src="http://yourdomain.ltd/link.jpg" alt="image"/&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="upcloo_post_title"&gt;
+            &lt;a href="http://yourdomain.ltd/link"&gt;Cloud Computing Pre-Produzione&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="upcloo_template_element"&gt;
+        &lt;div class="upcloo_post_image"&gt;
+            &lt;a href="http://yourdomain.ltd/link"&gt;
+                &lt;img src="http://yourdomain.ltd/link.jpg" alt="image"&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="upcloo_post_title"&gt;
+            &lt;a href="http://yourdomain.ltd/link"&gt;
+                EC2 primi risultati pre-produzione
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Other elements --&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </div>
+</div>

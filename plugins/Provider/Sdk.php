@@ -19,7 +19,14 @@ implements \Phrozn\Provider
             'tags' => 'https://github.com/corley/upcloo-wordpress-plugin/tags',
             'download' => 'https://github.com/corley/upcloo-wordpress-plugin/downloads',
             'issuesLink' => 'https://github.com/corley/upcloo-wordpress-plugin/issues'
-        )      
+        ),
+        'sitewalker' => array(
+            'issues' => array(),
+            'sourcecode' => 'https://github.com/corley/jupcloo-site-walker',
+            'tags' => 'https://github.com/corley/jupcloo-site-walker/tags',
+            'download' => 'https://github.com/corley/jupcloo-site-walker/downloads',
+            'issuesLink' => 'https://github.com/corley/jupcloo-site-walker/issues'
+        )
     );
     
     public function get()

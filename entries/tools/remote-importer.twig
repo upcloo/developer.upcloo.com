@@ -1,12 +1,31 @@
+providers:
+    sdk:
+        provider: Sdk
+        platform: sitewalker
+        issues: https://api.github.com/repos/corley/jupcloo-site-walker/issues
+    commits:
+        provider: Commit
+        api: https://api.github.com/repos/corley/jupcloo-site-walker/commits
+        repo: https://github.com/corley/jupcloo-site-walker
+---
 <div class="content">
     <div class="row">
         <div class="span12">
             <h1>UpCloo Remote Importer</h1>
-            <p>
-             	UpCloo remote importer it the UpCloo simple spider that get
+            <p class="lead">
+             	UpCloo remote importer is the UpCloo simple crawler that get
 				your contents for create the initial index.
             </p>
         </div>
+        <div class="span6">
+            <h2>Issues list</h2>
+            {% include '/../issues.twig' %}
+        </div>
+        <div class="span6">
+            <h2>Latest Updates</h2>
+            {% include '/../commits.twig' %}
+        </div>
+        {% include '/../github.twig' %}
     </div>
     <section id="remote-importer">
         <div class="row">

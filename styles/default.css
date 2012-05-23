@@ -36,3 +36,5 @@ header.start {padding: 36px 0 27px; border-bottom: 1px solid #e5e5e5;}
 }
 
 .icon-left { float:left; margin:4px 5px 0 0; }
+
+.big-text {font:13px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif; font-size: 180%; display:block;}
