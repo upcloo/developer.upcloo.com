@@ -1,0 +1,59 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>UpCloo Local Storage</h1>
+            <p>
+                The UpCloo local storage feature allows you to 
+                don't care about content indexing.
+            </p>
+            <p>
+                In other words you can call the <code>index</code> method on 
+                the same content without any problem and the 
+                library stack don't sent it to UpCloo if this content is sent previously.
+            </p>
+            <pre class="prettyprint linenums">
+$manager->index(...);
+$manager->index(...); //UpCloo SDK decide if send this one to UpCloo</pre>
+            <h2>Why local storage</h2>
+            <p>
+                Local Storage helps your company to implements UpCloo into your 
+                structure. If you enable the local storage you can create a 
+                simple sending flow like this:
+            </p>
+            <pre class="prettyprint linenums">
+// Into your controller or active page that handle a content
+$manager = UpCloo_Manager::getInstance();
+//Send all information without any consideration
+$manager->index(array('id' => $this->id, 'title' => $this->title, /* Other fields */)); 
+
+// Into your view or HTML template:
+$results = $manager->get($this->id);
+//Template $results</pre>
+            <h2>Using local storage</h2>
+            <p>
+                Using local storage is pretty simple, during your bootstrap enable 
+                the storage passing a valid file system path or a valid <code>PDO</code> instance.
+            </p>
+            <pre class="prettyprint linenums">
+$manager->useStorage('/path/on/disk/name.upcloo'); // locate the storage at this path on local storage.
+$manager->useStorage($myPDO); // Use a PDO resource</pre>
+            <h2>Using PDO Resource</h2>
+            <p>
+                If you want to use a personal PDO instance be careful that the UpCloo 
+                SDK wants to create a new structure on this connection.
+            </p>
+            <p>
+                Example of creation:
+            </p>
+            <pre class="prettyprint linenums">
+CREATE TABLE IF NOT EXISTS UpClooContents (content_id VARCHAR(255) PRIMARY KEY);</pre>
+            <h2>Force content updates</h2>
+            <p>
+                Obviously using local storage the index works only one time. If you 
+                want you can override the UpCloo SDK decisions using <code>$options</code>.
+            </p>
+            <pre class="prettyprint linenums">
+$manager->index(array(..), array(UpCloo_Manager::FORCE => true));</pre>
+        </div>
+    </div>
+</div>
