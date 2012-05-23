@@ -1,0 +1,32 @@
+providers:
+    sdk:
+        provider: Sdk
+        platform: java
+        issues: https://api.github.com/repos/corley/upcloo-java-sdk/issues
+    commits:
+        provider: Commit
+        api: https://api.github.com/repos/corley/upcloo-java-sdk/commits
+        repo: https://github.com/corley/upcloo-java-sdk
+---
+<div class="content">
+    <section>
+        <div class="row">
+            <div class="span12">
+                <h1>UpCloo Java SDK</h1>
+                <p>&nbsp;</p>
+            </div>
+            <div class="span6">
+                <h3>Issues list</h3>
+                {% include '/../issues.twig' %}
+            </div>
+            <div class="span6">
+                <h3>Latest Updates</h3>
+                {% include '/../commits.twig' %}
+            </div>
+            {% include '/../github.twig' %}
+            <div class="span12">
+                <p>Now you are ready to use UpCloo Java SDK.</p>
+            </div>
+        </div>
+    </section>
+</div>

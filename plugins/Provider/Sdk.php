@@ -13,6 +13,13 @@ implements \Phrozn\Provider
             'download' => 'https://github.com/corley/upcloo-php-sdk/downloads',
             'issuesLink' => 'https://github.com/corley/upcloo-php-sdk/issues' 
         ),
+        'java' => array(
+            'issues' => array(),
+            'sourcecode' => 'https://github.com/corley/upcloo-java-sdk',
+            'tags' => 'https://github.com/corley/upcloo-java-sdk/tags',
+            'download' => 'https://github.com/corley/upcloo-java-sdk/downloads',
+            'issuesLink' => 'https://github.com/corley/upcloo-java-sdk/issues'
+        ),
         'wordpress' => array(
             'issues' => array(),
             'sourcecode' => 'https://github.com/corley/upcloo-wordpress-plugin',

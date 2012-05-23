@@ -65,6 +65,34 @@ providers:
 &lt;!-- UPCLOO_POST_DYNAMIC_TAG_YOU one, two UPCLOO_POST_DYNAMIC_TAG_YOU --&gt;  
 &lt;!-- UPCLOO_POST_TAGS Dependency Injection,DiC,php,zend,Zend\Di,Zend_Di,zf2 UPCLOO_POST_TAGS --&gt;
 &lt;!-- UPCLOO_POST_CATEGORIES Applicazioni,PHP,Tests UPCLOO_POST_CATEGORIES --&gt;</pre>
+                <p>
+                    The content body is the only marker that wrap a portion of a text
+                    between two HTML comments. It mark the content starts and the content
+                    ends. See the example:
+                </p>
+                <pre class="prettyprint linenums">
+&lt;!-- UPCLOO_POST_CONTENT --&gt;Your body with HTML and other stuffs&lt;!-- UPCLOO_POST_CONTENT --&gt;</pre>
+                <p>
+                    List of basic fields that you can mark:
+                </p>
+                <ul>
+                    <li>id - MANDATORY - the unique content identification string.</li>
+                    <li>type - OPTIONAL - the type of this content (useful for searches).</li>
+                    <li>title - OPTIONAL - the content title.</li>
+                    <li>publish date - OPTIONAL - the content publish date.</li>
+                    <li>author - OPTIONAL - the content author/authors (comma separated).</li>
+                    <li>image - OPTIONAL - the link of image, if missing the first image in the content body will be used.</li>
+                    <li>tags - OPTIONAL - comma separated list of content tags.</li>
+                    <li>categories - OPTIONAL - comma separated list of content categories.</li>
+                </ul>
+                <p>
+                    Dynamic tag fields use a different structure, it has a base line that
+                    indicates names for tag specification. For example if you want to create
+                    a dynamic tag with name <code>agency</code> you have to do:
+                </p>
+                <pre class="prettyprint linenums">
+&lt;!-- UPCLOO_POST_DYNAMIC_TAG_LIST agency UPCLOO_POST_DYNAMIC_TAG_LIST --&gt;
+&lt;!-- UPCLOO_POST_DYNAMIC_TAG_AGENCY intel, apple, samsung UPCLOO_POST_DYNAMIC_TAG_AGENCY --&gt;</pre>
             </div>
         </div>
     </section>
