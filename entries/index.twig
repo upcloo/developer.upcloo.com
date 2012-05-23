@@ -55,10 +55,11 @@ providers:
                 {% for entry in this.providers.blog %}
                 <div class="span6" style="margin: 5px 0 5px;">
                     <div class="posted-date date-box">
-                        <span class="month">{{ entry.month }}</span>
-                        <span class="day">{{ entry.day }}</span>
+                        <span class="month">{{ entry.pubDate|date("M") }}</span>
+                        <span class="day">{{ entry.pubDate|date("d") }}</span>
                     </div>
                     <a target="_blank" href="{{ entry.link }}">{{ entry.title }}</a>
+                    <p>on {{ entry.pubDate|date('H:i') }}</p>
                 </div>
             {% endfor %}
                 <div class="span6" style="margin-top: 36px">

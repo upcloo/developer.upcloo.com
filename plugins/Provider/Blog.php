@@ -22,8 +22,6 @@ class Blog
                 'title' => (string)$path->title,
                 'link' => (string)$path->link,
                 'pubDate' => date("Y-m-d H:i:s", $date),
-                'month' => date('M', $date),
-                'day' => date('d', $date),
                 'summary' => (string)$path->description 
             );
             $results[] = $data;
