@@ -59,7 +59,6 @@ providers:
                         <span class="day">{{ entry.pubDate|date("d") }}</span>
                     </div>
                     <a target="_blank" href="{{ entry.link }}">{{ entry.title }}</a>
-                    <p>on {{ entry.pubDate|date('H:i') }}</p>
                 </div>
             {% endfor %}
                 <div class="span6" style="margin-top: 36px">
