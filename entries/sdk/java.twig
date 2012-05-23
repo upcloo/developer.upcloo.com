@@ -28,5 +28,82 @@ providers:
                 <p>Now you are ready to use UpCloo Java SDK.</p>
             </div>
         </div>
+        <div class="row">
+            <div class="span12">
+                <h1>Getting Started</h1>
+                <p>
+                    Java SDK provide mechanism for access to UpCloo 
+                    services with a Java platform.
+                </p>
+                <h2>Base example</h2>
+                <pre class="prettyprint linenums">
+Manager = Manager.getInstance();
+manager.setCredential("username", "sitekey", "password");
+
+//create a content for insert/update
+Doc document = new Doc();
+document.setId("134");
+document.setTitle("This is the title");
+
+//Request indexing
+if (manager.index(document)) {
+    //show that's ok\
+}
+
+//Request indexed document
+Base indexedDocument = manager.get("134");</pre>
+            </div>
+            <div class="span12">
+                <h2>Step by Step</h2>
+                <p>
+                    In the example below we get the singleton instance for UpCloo manager.
+                </p>
+                <pre class="prettyprint linenums">
+Manager manager = Manager.getInstance();
+manager.setCredential("username", "password", "sitekey");</pre>
+                <h3>Indexing contents</h3>
+                <p>
+                    Consider that <code>document</code> is an instace of 
+                    <code>com.upcloo.client.model.indexer.Doc</code>.
+                </p>
+                <pre class="prettyprint linenums">
+Doc document = new Doc();
+document.setId("35897");
+document.setTitle("This is the title");
+
+manager.index(document);</pre>
+                <h3>Retriving contents</h3>
+                <p>
+                    Consider that <code>documents</code> is an instance of <code>com.upcloo.client.model.getter.Docs</code>.
+                </p>
+                <pre class="prettyprint linenums">
+Docs documents  = manager.get("35897");</pre>
+                <h2>Requirements</h2>
+                <p>
+                    This library needs different library listed below.
+                </p>
+                <ul>
+                    <li>
+                        Apache HTTP Client
+                        <ul>
+                            <li>junit-4.10.jar</li>
+                            <li>httpmime-4.1.2.jar</li>
+                            <li>httpcore-4.1.2.jar</li>
+                            <li>httpclient-cache-4.1.2.jar</li>
+                            <li>httpclient-4.1.2.jar</li>
+                            <li>commons-logging-1.1.1.jar</li>
+                            <li>commons-codec-1.4.jar</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Under lib folder you can see the complete dependency list.
+                </p>
+                <h2>Running tests</h2>
+                <p>
+                    If you want run tests simply using <code>junit</code>. All tests are under <code>tests</code> folder.
+                </p>
+            </div>
+        </div>
     </section>
 </div>
