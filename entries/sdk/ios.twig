@@ -1,0 +1,197 @@
+providers:
+    sdk:
+        provider: Sdk
+        platform: ios
+        issues: https://api.github.com/repos/corley/upcloo-ios-sdk/issues
+    commits:
+        provider: Commit
+        api: https://api.github.com/repos/corley/upcloo-ios-sdk/commits
+        repo: https://github.com/corley/upcloo-ios-sdk
+---
+<div class="content">
+    <section>
+        <div class="row">
+            <div class="span12">
+                <h1>UpCloo iOS SDK</h1>
+                <p>&nbsp;</p>
+            </div>
+            <div class="span6">
+                <h3>Issues list</h3>
+                {% include '/../issues.twig' %}
+            </div>
+            <div class="span6">
+                <h3>Latest Updates</h3>
+                {% include '/../commits.twig' %}
+            </div>
+            {% include '/../github.twig' %}
+            <div class="span12">
+                <p>Now you are ready to use UpCloo iOS SDK.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+    	<div class="row">
+    		<div class="span12">
+    			<h1>UpCloo Cocoa Touch SDK</h1>
+    			<p>This SDK is intented for iOS applications</p>
+    			<h2>Load the library</h2>
+    			<p>
+    				You can load the UpCloo Cocoa SDK in two ways:
+    			</p>
+    			<ul>
+    				<li>Using sources directly</li>
+    				<li>Load static library</li>
+    			</ul>
+    			<p>
+    				The first method is pretty simple, copy all <code>.h</code> and <code>.c</code> 
+    				files into your project and use it.
+    			</p>
+    			<p>
+    				The second one is simple as well, move the <code>.a</code> into your framework 
+    				group and move only <code>.h</code> header files into your project.
+    			</p>
+    			<p>That's it no big deal!</p>
+    			<h3>Compile with ARC support</h3>
+    			<p>
+    				In order to compile the library into a project with ARC support you have to 
+    				remove this one from UpCloo library. For do that simply open BuildPhases tab 
+    				under main project settings and for all UpCloo's files add <code>-fno-objc-arc</code> 
+    				property on <code>Compile Source</code> section.
+    			</p>
+    			<h2>Example of usage</h2>
+    			<p>
+    				First of all you have to require the SDK
+    			</p>
+    			<pre class="prettyprint linenums">
+#import "UpClooSDK.h"</pre>
+				<p>That's load the library and you can use into your controllers.</p>
+				<h2>Bootstrap UpCloo SDK</h2>
+				<p>
+					You have to set credentials during your bootstrap (application launch)
+				</p>
+				<pre class="prettyprint linenums">
+UpClooSDK *upcloo = [UpClooSDK sharedManger];
+upcloo.sitekey = @"my-sitekey";
+//password is useless for only-get apps
+upcloo.password = @"my-password";</pre>
+				<p>
+					If you prefere you can use <code>setCredential()</code> method instead 
+					property setting.
+				</p>
+				<pre class="prettyprint linenums">
+[sharedManager setCredential: @"my-sitekey", @"my-password"];</pre>
+				<h2>Using the SDK for getting documents</h2>
+				<p>
+					UpCloo SDK use delegates for send messages asyncronously to your application. 
+					When you ask for a document (using get method), UpCloo SDK detach threads for 
+					process your request and only when the message is ready or error is returned 
+					call a delegate method.
+				</p>
+				<p>
+					Actually only two callback methods are available, one for all goes ok and one 
+					for show an error message.
+				</p>
+				<p>
+					Definition of callbacks are into <code>UpClooGetDelegate</code> protocol definition. 
+					For using you have to implements it at your controller and implements methods.
+				</p>
+				<pre class="prettyprint linenums">
+...
+
+#import "UpClooGetDelegate.h"
+
+...
+
+@interface MyController : UIViewController &lt;UpClooGetDelegate&gt; {
+
+...
+
+- (void)upclooContentsReady:(UpClooDocuments *)documents 
+{
+    //Documents are available
+}
+
+- (void)upclooUnableToGetContentsWithMessage: (NSString *)message
+{
+    //Show the error or handle it
+}</pre>
+				<h3>Documents structure (Get)</h3>
+				<p>
+					Documents are divided into two containers: <code>UpClooDocuments</code> and 
+					<code>UpClooDocument</code>. First type encapsulate the second one using an NSArray 
+					structure.
+				</p>
+				<p>
+					For that reason if you want to get elements you have to do:
+				</p>
+				<pre class="prettyprint linenums">
+//documents variable is a valid and filled UpClooDocuments instance
+int i;
+for (i=0; i&lt;documents.documents.count; i++) {
+    UpClooDocument *document = (UpClooDocument *)[documents.documents objectAtIndex: i];
+    NSLog(@"%@", document.title);
+}</pre>
+				<h2>Using SDK for posting documents (create/update)</h2>
+				<p>
+					Posting new documents or update olds you have to follow a similar flow as used 
+					during get flow.
+				</p>
+				<p>
+					First of all you have to fill a new <code>UpClooModelDocument</code> and request the 
+					indexing on <code>UpClooManager</code> shared manager. See it on an example:
+				</p>
+				<pre class="prettyprint linenums">
+UpClooModelDocument *model = [[UpClooModelDocument alloc] initWithIdAndTitle: @"post_14" : @"My title"];
+
+model.url = @"http://domain.ltd/my-link.html";
+model.content = @"This is the summary";
+//Other fields of document model
+
+[[UpClooManager sharedManager] postContent: model];</pre>
+				<p>
+					Calls are async as get calls. If you want you can register a delegate and listen 
+					for events. Two events are available: error, valid post content. For listen 
+					thoose events you have to implement the <code>UpClooPutDelegate</code> protocol.
+				</p>
+				<p>
+					That protocol have two methods: <code>- (void)upclooUnableToPutThisContentWithMessage:(NSString *)message;</code>
+					that is called when an error occur or the method: 
+					<code>- (void)upclooPutCompleted;</code>. The last one is optional and that you 
+					can never implement this one.
+				</p>
+				<h3>Post/Put delegate</h3>
+				<p>
+					For post/put new contents or updates old ones, you have to register a delegate 
+					for post/put operation.
+				</p>
+				<pre class="prettyprint linenums">
+//MyController.m
+UpClooSDK *manager = [UpClooSDK sharedManager];
+manager.putDelegate = self;</pre>
+				<p>
+					You have to be sure that your controller implements the put delegate protocol.
+				</p>
+				<pre class="prettyprint linenums">
+#import "UpClooPutDelegate.h"
+
+@interface MyCotroller : UIViewController &lt;UpClooPutDelegate&gt; {
+    - (void)upclooUnableToPutThisContentWithMessage:(NSString *)message
+   {
+       //Unable to store this content
+   }
+
+   //Optional method
+   - (void)upclooPutCompleted
+   {
+       //Sending OK
+   }
+}</pre>
+				<p>
+					Now you are ready to get messages from UpCloo SDK.
+				</p>
+				<h2>Unit Tests</h2>
+				<p>All tests are into UpClooSDKTests folder</p>
+    		</div>
+    	</div>
+    </section>
+</div>
