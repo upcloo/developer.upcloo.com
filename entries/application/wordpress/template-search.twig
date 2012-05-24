@@ -1,0 +1,91 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>Search Template [ReStyle results]</h1>
+            <p>
+                UpCloo Search try to show search results as better as it can. 
+                But if you want (or must because your theme want it redesign) 
+                you can restyle simple adding a file named: <code>search-result.php</code> 
+                <strong>into your theme folder</strong>. If this file is readable UpCloo Search 
+                feature use it instead the normal template engine.
+            </p>
+            <h2>Methods</h2>
+            <p>
+                Search template asks for results picking it up from UpCloo registry instance.
+            </p>
+            <pre class="prettyprint linenums">
+$results = UpCloo_Registry::getInstance()->get("results");</pre>
+            <p>
+                A valid UpCloo_Model_Search_Response will be returned. During pagination 
+                you can use some fuctions that simplify your templating.
+            </p>
+            <p>
+                Examples:
+            </p>
+            <ul>
+                <li><code>upcloo_suggests</code> rewrite your query using suggestions</li>
+                <li>
+                    <code>upcloo_search_have_pages</code> count pages and return the number 
+                    of pages for this search query
+                </li>
+                <li><code>upcloo_search_paginator</code> paginate your results</li>
+            </ul>
+            <h2>Templating example</h2>
+            <pre class="prettyprint linenums">
+<?php get_header(); ?>
+<?php $results = UpCloo_Registry::getInstance()->get("results"); ?>
+    <div id="primary">
+        <div id="content" role="main">
+            <h1 class="page-title">Result for search: <strong><?php echo $_GET["s"]?></strong></h1>
+
+            <!-- suggests -->
+            <?php $suggested = upcloo_suggests($results, $_GET["s"]);?>
+            <?php echo ((!empty($suggested)) ? __("Did you mean") . ": <strong><a title='".__("Search this occurrence", "wp_upcloo")."' href='/?s={$suggested}'>" . $suggested . "</a></strong>" : ""); ?>
+            <!-- end suggests -->
+
+            <?php if (count($results->getDocs()) <= 0) : ?>
+                <h3><?php echo __("Your search did not match any entries.", "wp_upcloo") ?></h3>
+            <?php else : ?>
+                <div class="main">
+                <hr />
+                <?php foreach ($results->getDocs() as $doc) : ?>
+                    <h3 class="entry-title"><a href="<?php echo $doc["url"];?>" title="<?php echo strip_tags($doc["title"])?>"><?php echo $doc["title"]?></a></h3>
+                    <span>Posted on: </span> <?php echo $doc["publish_date"] ?>
+                    <hr />
+                    <?php if (!empty($doc["author"])) : ?><p class="meta"><?php echo __("Written by")?> <?php $doc["author"] ?></p><?php endif; ?>
+                    <?php if (!empty($doc["summary"])) : ?>
+                    <p><?php echo $doc["summary"]?></p>
+                    <p><a href="<?php echo $doc["url"]?>"><?php echo __("Read more", "wp_upcloo")?>...</a></p>
+                    <?php endif ?> 
+                <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+                
+            <?php $pages = upcloo_search_have_pages($results); if ($pages) : ?>
+            <span><?php echo __("Pages", "wp_upcloo")?>: </span><span><?php echo upcloo_search_paginator($results) ?></span>
+            <hr />
+            <?php endif; ?>
+        </div><!-- #content -->
+    </div><!-- #container -->
+<?php get_sidebar(); ?>
+<?php get_footer(); ?></pre>
+            <h2>Highlights consideration</h2>
+            <p>
+                Consider that UpCloo Search have highlight feature. For this reason 
+                your links are marked for providing the best user experience with searches.
+            </p>
+            <p>
+                See highlight mark on a query: <code>"android plist"</code>
+            </p>
+            <pre class="prettyprint linenums">
+<a href="http://walterdalmut.com/2011/09/plist-su-android/" title="Leggere file PList su Android">
+  Leggere file <span class="upcloo-highlight">PList</span> su <span class="upcloo-highlight">Android</span>
+</a></pre>
+            <p>
+                You can see the <code>span</code> block that enable the CSS interaction 
+                for put words in evidence.
+            </p>
+        </div>
+    </div>
+</div>
