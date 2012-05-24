@@ -32,44 +32,44 @@ $results = UpCloo_Registry::getInstance()->get("results");</pre>
             </ul>
             <h2>Templating example</h2>
             <pre class="prettyprint linenums">
-<?php get_header(); ?>
-<?php $results = UpCloo_Registry::getInstance()->get("results"); ?>
-    <div id="primary">
-        <div id="content" role="main">
-            <h1 class="page-title">Result for search: <strong><?php echo $_GET["s"]?></strong></h1>
+&lt;?php get_header(); ?&gt;
+&lt;?php $results = UpCloo_Registry::getInstance()-&gt;get("results"); ?&gt;
+    &lt;div id="primary"&gt;
+        &lt;div id="content" role="main"&gt;
+            &lt;h1 class="page-title"&gt;Result for search: &lt;strong&gt;&lt;?php echo $_GET["s"]?&gt;&lt;/strong&gt;&lt;/h1&gt;
 
-            <!-- suggests -->
-            <?php $suggested = upcloo_suggests($results, $_GET["s"]);?>
-            <?php echo ((!empty($suggested)) ? __("Did you mean") . ": <strong><a title='".__("Search this occurrence", "wp_upcloo")."' href='/?s={$suggested}'>" . $suggested . "</a></strong>" : ""); ?>
-            <!-- end suggests -->
+            &lt;!-- suggests --&gt;
+            &lt;?php $suggested = upcloo_suggests($results, $_GET["s"]);?&gt;
+            &lt;?php echo ((!empty($suggested)) ? __("Did you mean") . ": &lt;strong&gt;&lt;a title='".__("Search this occurrence", "wp_upcloo")."' href='/?s={$suggested}'&gt;" . $suggested . "&lt;/a&gt;&lt;/strong&gt;" : ""); ?&gt;
+            &lt;!-- end suggests --&gt;
 
-            <?php if (count($results->getDocs()) <= 0) : ?>
-                <h3><?php echo __("Your search did not match any entries.", "wp_upcloo") ?></h3>
-            <?php else : ?>
-                <div class="main">
-                <hr />
-                <?php foreach ($results->getDocs() as $doc) : ?>
-                    <h3 class="entry-title"><a href="<?php echo $doc["url"];?>" title="<?php echo strip_tags($doc["title"])?>"><?php echo $doc["title"]?></a></h3>
-                    <span>Posted on: </span> <?php echo $doc["publish_date"] ?>
-                    <hr />
-                    <?php if (!empty($doc["author"])) : ?><p class="meta"><?php echo __("Written by")?> <?php $doc["author"] ?></p><?php endif; ?>
-                    <?php if (!empty($doc["summary"])) : ?>
-                    <p><?php echo $doc["summary"]?></p>
-                    <p><a href="<?php echo $doc["url"]?>"><?php echo __("Read more", "wp_upcloo")?>...</a></p>
-                    <?php endif ?> 
-                <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
+            &lt;?php if (count($results-&gt;getDocs()) &lt;= 0) : ?&gt;
+                &lt;h3&gt;&lt;?php echo __("Your search did not match any entries.", "wp_upcloo") ?&gt;&lt;/h3&gt;
+            &lt;?php else : ?&gt;
+                &lt;div class="main"&gt;
+                &lt;hr /&gt;
+                &lt;?php foreach ($results-&gt;getDocs() as $doc) : ?&gt;
+                    &lt;h3 class="entry-title"&gt;&lt;a href="&lt;?php echo $doc["url"];?&gt;" title="&lt;?php echo strip_tags($doc["title"])?&gt;"&gt;&lt;?php echo $doc["title"]?&gt;&lt;/a&gt;&lt;/h3&gt;
+                    &lt;span&gt;Posted on: &lt;/span&gt; &lt;?php echo $doc["publish_date"] ?&gt;
+                    &lt;hr /&gt;
+                    &lt;?php if (!empty($doc["author"])) : ?&gt;&lt;p class="meta"&gt;&lt;?php echo __("Written by")?&gt; &lt;?php $doc["author"] ?&gt;&lt;/p&gt;&lt;?php endif; ?&gt;
+                    &lt;?php if (!empty($doc["summary"])) : ?&gt;
+                    &lt;p&gt;&lt;?php echo $doc["summary"]?&gt;&lt;/p&gt;
+                    &lt;p&gt;&lt;a href="&lt;?php echo $doc["url"]?&gt;"&gt;&lt;?php echo __("Read more", "wp_upcloo")?&gt;...&lt;/a&gt;&lt;/p&gt;
+                    &lt;?php endif ?&gt; 
+                &lt;?php endforeach; ?&gt;
+                &lt;/div&gt;
+            &lt;?php endif; ?&gt;
 
                 
-            <?php $pages = upcloo_search_have_pages($results); if ($pages) : ?>
-            <span><?php echo __("Pages", "wp_upcloo")?>: </span><span><?php echo upcloo_search_paginator($results) ?></span>
-            <hr />
-            <?php endif; ?>
-        </div><!-- #content -->
-    </div><!-- #container -->
-<?php get_sidebar(); ?>
-<?php get_footer(); ?></pre>
+            &lt;?php $pages = upcloo_search_have_pages($results); if ($pages) : ?&gt;
+            &lt;span&gt;&lt;?php echo __("Pages", "wp_upcloo")?&gt;: &lt;/span&gt;&lt;span&gt;&lt;?php echo upcloo_search_paginator($results) ?&gt;&lt;/span&gt;
+            &lt;hr /&gt;
+            &lt;?php endif; ?&gt;
+        &lt;/div&gt;&lt;!-- #content --&gt;
+    &lt;/div&gt;&lt;!-- #container --&gt;
+&lt;?php get_sidebar(); ?&gt;
+&lt;?php get_footer(); ?&gt;</pre>
             <h2>Highlights consideration</h2>
             <p>
                 Consider that UpCloo Search have highlight feature. For this reason 
