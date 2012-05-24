@@ -1,0 +1,99 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>
+                Template widget results by hand using UpCloo callbackNew Page Edit Page Page History
+            </h1>
+            <p>
+                You can show widgets results completely by hand using the UpCloo callback during 
+                result templating.
+            </p>
+            <h2>The result hook</h2>
+            <p>
+                The hook that you have to use is: <code>upcloo_user_widget_callback</code>
+            </p>
+            <p>
+                You have to configure your <code>functions.php</code> file into your active theme with the 
+                UpCloo callback function. This function receive one parameter that is a list 
+                of models (array) with UpCloo best results for your content.
+            </p>
+            <p>Check this quick example:</p>
+            <pre class="prettyprint linenums">
+//functions.php (theme)
+function upcloo_user_widget_callback($listOfModels)
+{
+    //use the list of models as you need
+
+    //return a string with the result
+    return "This is my result";
+}</pre>
+            <h2>A simple real example</h2>
+            <p>
+                In this example we realize the template system for UpCloo results by hand using HTML 
+                unsorted list (<code>ul</code>).
+            </p>
+            <pre class="prettyprint linenums">
+function upcloo_user_widget_callback($listOfModels)
+{
+   //init the content variable
+   $content = '';
+
+   $content .= "<h2>Network results:</h2>";
+
+   $content .= "<ul>";
+   foreach ($listOfModels as $element) {
+       $content .= "<li><a href='{$element["url"]}'>{$element["title"]}</a></li>";
+   }
+   $content .= '</ul>';
+
+   return $content;
+}</pre>
+            <h2>Other notes</h2>
+            <p>
+                Consider that all UpCloo results URL is UTM tagged if you enable this feature.
+            </p>
+            <h2>List of models explanation</h2>
+            <p>
+                The list of models is an object with one property named <code>doc</code> that is an 
+                array of results. If no results is provided the array is empty.
+            </p>
+            <p>
+                Each node of doc is an array with different properties.
+            </p>
+            <pre class="prettyprint linenums">
+array(10) {
+  [0]=>
+  object(UpCloo_Model_Base)#4252 (1) {
+    ["_container:protected"]=>
+    array(5) {
+      ["title"]=>
+      string(36) "Nginx VS Apache2 on static resources"
+      ["url"]=>
+      string(69) "http://walterdalmut.com/2011/10/nginx-vs-apache2-on-static-resources/"
+      ["description"]=>
+      string(0) ""
+      ["type"]=>
+      string(4) "post"
+      ["image"]=>
+      string(0) ""
+    }
+  }
+  [1]=>
+  object(UpCloo_Model_Base)#4251 (1) {
+    ["_container:protected"]=>
+    array(5) {
+      ["title"]=>
+      string(36) "Nginx VS Apache2 on static resources"
+      ["url"]=>
+      string(72) "http://walterdalmut.com/2011/10/08/nginx-vs-apache2-on-static-resources/"
+      ["description"]=>
+      string(140) "First of all comparison between Apache and Nginx are useless because the first one is process based and the second one is async event based."
+      ["type"]=>
+      string(4) "post"
+      ["image"]=>
+      string(0) ""
+    }
+  }</pre>
+        </div>
+    </div>
+</div>
