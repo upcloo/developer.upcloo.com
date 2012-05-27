@@ -5,6 +5,8 @@ header.start {padding: 36px 0 27px; border-bottom: 1px solid #e5e5e5;}
 .sdk-sep {padding-top: 36px; margin-bottom: 27px; border-top: 1px solid #e5e5e5;}
 .head-index-text {margin-top: 36px; margin-bottom: 27px;}
 
+.line-bottom {border-bottom: 1px solid #e5e5e5; padding-bottom: 27px; margin-bottom: 10px;}
+
 .date-box {
 	display: block;
 	float: left;
