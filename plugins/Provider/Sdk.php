@@ -33,7 +33,21 @@ implements \Phrozn\Provider
             'tags' => 'https://github.com/corley/jupcloo-site-walker/tags',
             'download' => 'https://github.com/corley/jupcloo-site-walker/downloads',
             'issuesLink' => 'https://github.com/corley/jupcloo-site-walker/issues'
-        )
+        ),
+		'ios' => array(
+    		'issues' => array(),
+    		'sourcecode' => 'https://github.com/corley/upcloo-ios-sdk',
+    		'tags' => 'https://github.com/corley/upcloo-ios-sdk/tags',
+    		'download' => 'https://github.com/corley/upcloo-ios-sdk/downloads',
+    		'issuesLink' => 'https://github.com/corley/upcloo-ios-sdk/issues'
+		),
+    	'js' => array(
+    		'issues' => array(),
+    		'sourcecode' => 'https://github.com/corley/upcloo-js-sdk',
+    		'tags' => 'https://github.com/corley/upcloo-js-sdk/tags',
+    		'download' => 'https://github.com/corley/upcloo-js-sdk/downloads',
+    		'issuesLink' => 'https://github.com/corley/upcloo-js-sdk/issues'
+    	),
     );
     
     public function get()
