@@ -27,6 +27,13 @@ implements \Phrozn\Provider
             'download' => 'https://github.com/corley/upcloo-wordpress-plugin/downloads',
             'issuesLink' => 'https://github.com/corley/upcloo-wordpress-plugin/issues'
         ),
+        'joomla' => array(
+            'issues' => array(),
+            'sourcecode' => 'https://github.com/corley/upcloo-joomla-plugin',
+            'tags' => 'https://github.com/corley/upcloo-joomla-plugin/tags',
+            'download' => 'https://github.com/corley/upcloo-joomla-plugin/downloads',
+            'issuesLink' => 'https://github.com/corley/upcloo-joomla-plugin/issues'
+        ),
         'sitewalker' => array(
             'issues' => array(),
             'sourcecode' => 'https://github.com/corley/jupcloo-site-walker',

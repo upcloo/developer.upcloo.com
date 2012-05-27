@@ -1,0 +1,33 @@
+providers:
+    sdk:
+        provider: Sdk
+        platform: joomla
+        issues: https://api.github.com/repos/corley/upcloo-joomla-plugin/issues
+    commits:
+        provider: Commit
+        api: https://api.github.com/repos/corley/upcloo-joomla-plugin/commits
+        repo: https://github.com/corley/upcloo-joomla-plugin
+---
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>UpCloo Joomla! Plugin</h1>
+            <p class="lead">
+                Joomla! plugin allows a complete integration with
+                UpCloo services. 
+            </p>
+        </div>
+        <div class="span6">
+            <h2>Issues list</h2>
+            {% include '/../issues.twig' %}
+        </div>
+        <div class="span6">
+            <h2>Latest Updates</h2>
+            {% include '/../commits.twig' %}
+        </div>
+        {% include '/../github.twig' %}
+    </div>
+    <div class="span12">
+        <p class="lead">Coming Soon</p>
+    </div>
+</div>
