@@ -105,7 +105,7 @@ $response = $manager->index(
                     UpCloo works using a cloud based NOSQL database and for that
                     reason you can indexing a moltitude of fields, a fixed structure 
                     is already design by our team for simplify your life and the 
-                    full list of fixed tags is here:
+                    <em>partial list</em> of fixed tags is here:
                 </p>
             </div>
             <div class="span6">
@@ -184,12 +184,18 @@ $response = $manager->index(
                     using a <code>get</code> dedicated method.
                 </p>
                 <pre class="prettyprint linenums">
-$correlations = $manager->get("content-id");</pre>
+$correlations = $manager-&gt;get("content-id");</pre>
                 <p>
                     Retriving relations is very simple, you send the content
                     identification string and retrive the contents list.
                     UpCloo choose the best for you.
                 </p>
+                <p>
+                    Retriving correlations from a virtual sitekey is simple
+                    as well as get directly from a sitekey.
+                </p>
+                <pre class="prettyprint linenums">
+$correlations = $manager-&gt;get("content-id", "vsitekey");</pre>
             </div>
             <div class="span12">
                 <h2>Local storage</h2>
