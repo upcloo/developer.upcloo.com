@@ -69,16 +69,16 @@ class FieldSpecification
             'name' => 'Content URL',
             'syntax' => 'url',
             'usage' => 'optional',
-            'description' => 'This field is a fully qualified URL. eg. http://your-domain.ltd/index.html',
+            'description' => 'This field is a fully qualified URL. eg. <code>http://your-domain.ltd/index.html</code>',
             'type' => 'general string',
             'notes' => 'You can set any string without any limit if not the minimun length is one character.',
             'multiplicity' => 'one time'
         ),
-        'url' => array(
+        'image' => array(
             'name' => 'Image URL',
             'syntax' => 'image',
             'usage' => 'optional',
-            'description' => 'This field is a fully qualified URL of a content image. eg. http://your-domain.ltd/images/1.png',
+            'description' => 'This field is a fully qualified URL of a content image. eg. <code>http://your-domain.ltd/images/1.png</code>',
             'type' => 'general string',
             'notes' => 'You can set any string without any limit if not the minimun length is one character.',
             'multiplicity' => 'one time'

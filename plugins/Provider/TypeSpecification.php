@@ -19,7 +19,7 @@ class TypeSpecification
         ),
         'decimal' => array(
             'name' => 'Decimal (floating point)',
-            'syntax' => 'string',
+            'syntax' => 'decimal',
             'description' => 'Floating point numbers, use the dot for decimal separation.',
         ),
         'date' => array(
