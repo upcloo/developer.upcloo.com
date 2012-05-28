@@ -78,6 +78,11 @@ manager.index(document);</pre>
                 </p>
                 <pre class="prettyprint linenums">
 Docs documents  = manager.get("35897");</pre>
+                <p>
+                    If you have to get contents from a virtual sitekey you have to do:
+                </p>
+                <pre class="prettyprint linenums">
+Docs documents  = manager.get("35897", "my-vsite");</pre>
                 <h2>Requirements</h2>
                 <p>
                     This library needs different library listed below.
