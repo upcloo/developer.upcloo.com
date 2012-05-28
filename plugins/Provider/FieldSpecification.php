@@ -55,7 +55,34 @@ class FieldSpecification
             'type' => 'text',
             'notes' => 'This field is automatically threated as a text.',
             'multiplicity' => 'one time'
-        )
+        ),
+        'type' => array(
+            'name' => 'Type of content',
+            'syntax' => 'type',
+            'usage' => 'optional',
+            'description' => 'This field indicates the type of your content, eg. post, article, news, etc.',
+            'type' => 'general string',
+            'notes' => 'You can set any string without any limit if not the minimun length is one character.',
+            'multiplicity' => 'one time'
+        ),
+        'url' => array(
+            'name' => 'Content URL',
+            'syntax' => 'url',
+            'usage' => 'optional',
+            'description' => 'This field is a fully qualified URL. eg. http://your-domain.ltd/index.html',
+            'type' => 'general string',
+            'notes' => 'You can set any string without any limit if not the minimun length is one character.',
+            'multiplicity' => 'one time'
+        ),
+        'url' => array(
+            'name' => 'Image URL',
+            'syntax' => 'image',
+            'usage' => 'optional',
+            'description' => 'This field is a fully qualified URL of a content image. eg. http://your-domain.ltd/images/1.png',
+            'type' => 'general string',
+            'notes' => 'You can set any string without any limit if not the minimun length is one character.',
+            'multiplicity' => 'one time'
+        ),
     );
     
     public function get()
