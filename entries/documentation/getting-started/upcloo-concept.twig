@@ -1,0 +1,55 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>UpCloo Design</h1>
+            <p>
+                UpCloo is designed around an index. UpCloo SDKs or REST service
+                interact with this index and generate results that are stored 
+                into a caching system. This caching system has a web layer that
+                enable a user to retrive results.
+            </p>
+            <p>
+                When a new website want to use UpCloo a new sitekey will be created
+                and one user has a valid credential access to a personal index.
+            </p>
+            <p>
+                Using SDKs or REST the index change during it life and the cache will
+                be updated.
+            </p>
+            <blockquote>
+                <p>
+                Ok, that's great but if I want to create more than one aspect of my 
+                index? 
+                </p>
+                <small>
+                An aspect is another rule for display a correlation tree
+                </small>
+            </blockquote>
+            <p>
+                <strong>Virtual Sitekeys</strong> are the response. When a new virtual
+                sitekey is started it behaviour is very similar to a sitekey but the
+                rule of this key is completely different.
+            </p>
+            <p>
+                A virtual sitekey tipically is used when UpCloo runs in network mode
+                an you have more than one website. In that scenario you have a sitekey
+                for every website and some virtual sitekey for show results about a 
+                content picked up from other websites of your network.
+            </p>
+            <p>
+                This feature is very useful, your interface for getting correlation is
+                the same always if you have a single site or if you have multiple sites.
+                Taka a lot with an example:
+            </p>
+            <pre class="prettyprint linenums">
+docs = manager->get("123"); //get correlation for content 123
+docs2 = manager-ger("123", "vsitekey"); //get correaltion for content 123 from a virtual sitekey named vsitekey</pre>
+            <p>
+                Virtual Sitekey can be used also in single site creating new aspects
+                using document fields. Suppose that you want to show results of a particular
+                author of your website, you can create a virtual sitekey for accomplish
+                this task.
+            </p>
+        </div>
+    </div>
+</div>
