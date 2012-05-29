@@ -1,0 +1,63 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>Load UpCloo PHP SDK using PEAR/PEAR2 repository</h1>
+            <p>
+                PEAR is a package manager. UpCloo uses the <a target="_blank" href="http://pear.corley.it">Corley PEAR</a> repository.
+            </p>
+            <p>
+                Usage PEAR is a very useful strategy, you can maintain always update your library with
+                few steps.
+            </p>
+            <h2>Getting Started with PEAR</h2>
+            <p>
+                First of all we have to discover the Corley repository
+            </p>
+            <pre>
+pear channel-discover pear.corley.it</pre>
+            <p>
+                You can show the channel content with
+            </p>
+            <pre>
+pear remote-list -c corley</pre>
+            <p>
+                You can install the UpCloo library
+            </p>
+            <pre>
+pear install corley/UpCloo_Manager</pre>
+            <p>
+                If the library is in beta state you have to specify into your request
+            </p>
+            <pre>
+pear install corley/UpCloo_Manager-beta</pre>
+            <h2>Getting Started with Pyrus</h2>
+            <p>
+                Pyrus the new PEAR package manager. Steps are very similar to PEAR repository.
+            </p>
+            <pre>
+php pyrus.phar channel-discover pear.corley.it</pre>
+            <p>
+                After the channel discover you can install the package
+            </p>
+            <pre>
+php pyrus.phar install UpCloo_Manager</pre>
+            <p>
+                If the library is in beta state you have to specify into your request
+            </p>
+            <pre>
+php pyrus.phar install UpCloo_Manager-beta</pre>
+            <h2>After library install</h2>
+            <p>
+                Now you are ready to use the UpCloo PHP SDK into your projects.
+                Require for the library Autoload for start the library    
+            </p>
+            <pre class="prettprint linenums">
+require_once 'UpCloo/Autoloader.php';</pre>
+            <blockquote>
+                Remember that the PEAR path must be included into your <code>include_path</code> definition
+                into your <code>php.ini</code> or you have to include it using the <code>set_include_path()</code>
+                function.
+            </blockquote>
+        </div>
+    </div>
+</div>
