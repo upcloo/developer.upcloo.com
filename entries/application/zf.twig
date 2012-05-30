@@ -2,7 +2,130 @@
 	<div class="row">
 		<div class="span12">
 			<h1>Zend Framework Application</h1>
-			
+			<p>
+			    A Zend Framework application tipically works on an MVC structure.
+			    <a href="/sdk/php.html">UpCloo PHP SDK</a> has a section
+			    dedicated to this framework that simplify the UpCloo integration
+			    on your ZF Application.
+			</p>
+			<h2>Getting Started</h2>
+			<p>
+			    First of all get UpCloo using one method, using PEAR packages is 
+			    highly recommanded. 
+			</p>
+			<pre class="prettyprint">
+pear channel-discover pear.corley.it
+pear install UpCloo_Manager-beta
+</pre>
+            <p>
+                Now bootstrap the UpCloo library into your <code>application.ini</code>
+            </p>
+            <pre class="prettyprint linenums">
+autoloadernamespaces.UpCloo = "UpCloo_"
+pluginPaths.UpCloo_Zend_Application_Resource = "UpCloo/Zend/Application/Resource"
+
+resources.upcloo.username = "your-username"
+resources.upcloo.password = "your-password"
+resources.upcloo.sitekey = "your-sitekey"
+
+resources.upcloo.storage = APPLICATION_PATH "/../system/storage.db"
+
+resources.frontController.actionHelperPaths.UpCloo_Zend_Controller_Action_Helper = "UpCloo/Zend/Controller/Action/Helper"
+resources.frontController.plugins.UpClooRemoteImporter = "UpCloo_Zend_Controller_Plugin_UpClooRemoteImporter"
+resources.view.helperPath.UpCloo_Zend_View_Helper = "UpCloo/Zend/View/Helper
+</pre>
+            <ul>
+                <li>
+                    At the first line line we request that the namespace <code>UpCloo_</code> must
+                    be loaded, UpCloo is designed for following PSR-0 standard.
+                </li>
+                <li>
+                    The second line indicates the path for UpCloo ZF bootstrap resources, with
+                    this line we can create <code>resources.upcloo</code> lines into <code>application.ini</code>
+                </li>
+                <li>
+                    Line four to six set the credentials for connecting to UpCloo servers.
+                </li>
+                <li>
+                    Line 8 the path for create the storage for recording UpCloo indexing operation.
+                </li>
+                <li>
+                    Line 10 adding the action helpers path for UpCloo.
+                </li>
+                <li>
+                    Line 11 enable the plugin for UpCloo that simplify the meta information for remote
+                    importer
+                </li>
+                <li>
+                    Line 12 set the path for UpCloo view helpers.
+                </li>
+            </ul>
+            <p>
+                After the bootstrap you can use the UpCloo into your application. We'll work into two
+                section, your controllers and you views.
+            </p>
+            <p>
+                First of all in a controller that show your content you have to do something like that
+            </p>
+            <pre class="prettyprint linenums">
+$this->_helper->upcloo(
+    array(
+        "id" => $article->id,
+        "title" => $article->title,
+        "url" => $article->url
+    )
+);</pre>
+            <p>
+                Looking for a complete example of a detail controller
+            </p>
+            <pre class="prettyprint linenums">
+class DetailController extends Zend_Controller_Action
+{
+    public function getAction()
+    {
+        $id = $this->_getParam('id');
+        $model = Article::get($id);
+        
+        /*
+         * The URL is better if you have a router strategy.
+         * If is, assemble your URL with the ZF router.
+         */
+        $this->_helper->upcloo(
+            array(
+                'id' => $model->id,
+                'title' => $model->title,
+                'url' => 'http://my-host.ltd/detail/get/id/12'
+            )
+        );
+        
+        //Assign to view the article model
+        $this->view->articleModel = $model;
+    }
+}</pre>
+            <p>
+                The action helper prepare metadatas for the UpCloo plugin
+                (line 11 of <code>application.ini</code>). This part append
+                to your page bode the meta information of your content using
+                data passed with the action helper. When you want to turn off
+                meta data simply comment this line (put semicolon in front off).
+            </p>
+            <p>
+                Now into your view we have to display the UpCloo information,
+                you can select two strategies. The first using the UpCloo
+                view Helper
+            </p>
+            <pre class="prettyprint linenums">
+&lt;?php echo $this->upcloo($articleModel->id)?&gt;</pre>
+            <p>
+                Otherwise the UpCloo PHP SDK directly.
+            </p>
+            <pre class="prettyprint linenums">
+&lt;?php 
+    $manager = UpCloo_Manager::getInstance();
+    $contents = $manager->get($articleModel->id);
+    
+    //Render contents by your self.
+?&gt;</pre>
 		</div>
 	</div>
 </div>
