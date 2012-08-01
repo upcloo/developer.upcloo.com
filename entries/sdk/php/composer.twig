@@ -1,0 +1,38 @@
+v class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>Load UpCloo PHP SDK using Composer</h1>
+            <p>
+                UpCloo PHP SDK works with Composer the Dependency Manager for PHP.
+            </p>
+            <h2>Start with Composer</h2>
+            <p>
+                First of all create the <code>composer.json</code> file.
+            </p>
+            <pre class="prettyprint linenums">
+{
+    "require": {
+        "corley/upcloo-php-sdk": "0.12.*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/corley/upcloo-php-sdk.git"
+        }
+    ]
+}</pre>
+            <p>
+                After that install <code>composer.phar</code> and run it.
+            </p>
+            <pre class="prettyprint linenums">
+curl -s http://getcomposer.org/installer | php
+php composer.phar install</pre>
+            <p>
+                You can use the composer autoloader.
+            </p>
+            <pre class="prettyprint linenums">
+<?php
+require_once dirname(__FILE__) . '/../vendor/autoload.php';</pre>
+        </div>
+    </div>
+</div>
