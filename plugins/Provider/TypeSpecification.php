@@ -1,7 +1,7 @@
-<?php 
+<?php
 namespace PhroznPlugin\Provider;
 
-class TypeSpecification 
+class TypeSpecification
     extends \Phrozn\Provider\Base
     implements \Phrozn\Provider
 {
@@ -33,7 +33,7 @@ class TypeSpecification
             'description' => 'Text string. This field is threated by UpCloo for text analysis.'
         )
     );
-    
+
     public function get()
     {
         $config = $this->getConfig();

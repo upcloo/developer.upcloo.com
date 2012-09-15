@@ -2,11 +2,11 @@ providers:
     sdk:
         provider: Sdk
         platform: php
-        issues: https://api.github.com/repos/corley/upcloo-php-sdk/issues
+        issues: https://api.github.com/repos/upcloo/upcloo-php-sdk/issues
     commits:
         provider: Commit
-        api: https://api.github.com/repos/corley/upcloo-php-sdk/commits
-        repo: https://github.com/corley/upcloo-php-sdk
+        api: https://api.github.com/repos/upcloo/upcloo-php-sdk/commits
+        repo: https://github.com/upcloo/upcloo-php-sdk
 ---
 <div class="content">
     <section>
@@ -35,16 +35,16 @@ providers:
                 <h2>Getting Started</h2>
                 <p>
                     First of all you have to get the library using the <a href="/sdk/php/git-source.html">source tree</a>
-                    , using the <a href="/sdk/php/phar.html">PHAR archives</a> or using our <a target="_blank" href="http://pear.corley.it">PEAR channel</a> or using <a href="/sdk/php/composer.html">Composer</a>. 
+                    , using the <a href="/sdk/php/phar.html">PHAR archives</a> or using our <a target="_blank" href="http://pear.corley.it">PEAR channel</a> or using <a href="/sdk/php/composer.html">Composer</a>.
                 </p>
                 <ul>
                     <li><a href="/sdk/php/composer.html">How to load UpCloo PHP SDK using Composer</a></li>
                     <li><a href="/sdk/php/git-source.html">How to load UpCloo PHP SDK using the source tree (GIT or copy-paste)</a></li>
                     <li><a href="/sdk/php/phar.html">How to load UpCloo PHP SDK using the PHAR archive</a></li>
-                    <li><a href="/sdk/php/pear.html">How to load UpCloo PHP SDK using PEAR or Pyrus package manager</a></li> 
+                    <li><a href="/sdk/php/pear.html">How to load UpCloo PHP SDK using PEAR or Pyrus package manager</a></li>
                 </ul>
                 <p>
-                    If you use ZF (Zend Framework) you have an already designed 
+                    If you use ZF (Zend Framework) you have an already designed
                     <a href="/sdk/php/zf.html">resource bootstrap</a>.
                 </p>
             </div>
@@ -69,14 +69,14 @@ require_once 'path/to/UpCloo/Autoloader.php';</pre>
 $autoloader = Zend_Loader_Autoloader::getInstance();
 $autoloader->registerNamespace("UpCloo_");</pre>
                 <p>
-                    UpCloo SDK provides a section dedicated to 
+                    UpCloo SDK provides a section dedicated to
                     <a href="/sdk/php/zf.html">Zend Framework</a>
                     for simplify the integration process.
                 </p>
                 <h3>Setting up your credentials</h3>
                 <p>
                     UpCloo SDKs is designed on Singleton pattern, for
-                    more information around that design <a href="http://en.wikipedia.org/wiki/Singleton_pattern">see on wiki</a>. 
+                    more information around that design <a href="http://en.wikipedia.org/wiki/Singleton_pattern">see on wiki</a>.
                 </p>
                 <pre class="prettyprint linenums">
 $manager = UpCloo_Manager::getInstance();
@@ -101,7 +101,7 @@ $response = $manager->index(
 );</pre>
                 <p>
                     The only mandatory element in a valid index
-                    request is the <code>id</code> field. But 
+                    request is the <code>id</code> field. But
                     using also other fields is highly recommended.
                     Tipically using <code>title</code>, <code>summary</code>
                     is a good choice.
@@ -110,8 +110,8 @@ $response = $manager->index(
             <div class="span12">
                 <p>
                     UpCloo works using a cloud based NOSQL database and for that
-                    reason you can indexing a moltitude of fields, a fixed structure 
-                    is already design by our team for simplify your life and the 
+                    reason you can indexing a moltitude of fields, a fixed structure
+                    is already design by our team for simplify your life and the
                     <em>partial list</em> of fixed tags is here:
                 </p>
             </div>
@@ -121,7 +121,7 @@ $response = $manager->index(
                         <ul>
                             <li>Identification number</li>
                             <li>
-                                ID must be unique into your sitekey and is typed as a 
+                                ID must be unique into your sitekey and is typed as a
                                 fully qualified string.
                             </li>
                         </ul>
@@ -130,7 +130,7 @@ $response = $manager->index(
                         <ul>
                             <li>The content title</li>
                             <li>
-                                Tipically a title is a short text but no 
+                                Tipically a title is a short text but no
                                 limit are imposed.
                             </li>
                         </ul>
@@ -169,7 +169,7 @@ $response = $manager->index(
                     instead.
                 </p>
                 <p>
-                    Only five type of dynamic tags are available at this 
+                    Only five type of dynamic tags are available at this
                     time:
                 </p>
                 <ul>
@@ -181,7 +181,7 @@ $response = $manager->index(
                 </ul>
             </div>
             <div class="span12">
-                <p>For more information about UpCloo fields use the 
+                <p>For more information about UpCloo fields use the
                 <a href="/documentation.html#fields">base docs here</a></p>
             </div>
             <div class="span12">
@@ -207,12 +207,12 @@ $correlations = $manager-&gt;get("content-id", "vsitekey");</pre>
             <div class="span12">
                 <h2>Local storage</h2>
                 <p>
-                    Using the local storage indicates that you can require 
-                    the indexing of a content without consider that this content 
+                    Using the local storage indicates that you can require
+                    the indexing of a content without consider that this content
                     was already sent to UpCloo.
                 </p>
                 <p>
-                    UpCloo SDK provide a local storage for save indexing operation. 
+                    UpCloo SDK provide a local storage for save indexing operation.
                     This storage simplify the recording operation for reduce your indexing requests.
                 </p>
                 <p>
@@ -221,19 +221,19 @@ $correlations = $manager-&gt;get("content-id", "vsitekey");</pre>
                 <pre class="prettyprint linenums">
 $manager->useStorage(dirname(__FILE__) . '/system/dbs/upcloo.sqlite');</pre>
                 <p>
-                    In the previous example we indicate that UpCloo must use a 
-                    storage located at path <code>/system/dbs</code> (from the bootstrap file position) 
-                    and the filename is <code>upcloo.sqlite</code>. 
+                    In the previous example we indicate that UpCloo must use a
+                    storage located at path <code>/system/dbs</code> (from the bootstrap file position)
+                    and the filename is <code>upcloo.sqlite</code>.
                     <em>If the storage doens't exists UpCloo SDK create it from scratch</em>.
                 </p>
                 <h3>Storage Structure</h3>
                 <p>
-                    The UpCloo storage system use a very simple structure. It store locally all contents 
+                    The UpCloo storage system use a very simple structure. It store locally all contents
                     sent to the UpCloo indexer. In this way you can simplify the UpCloo integration.
                 </p>
                 <pre class="prettyprint linenums">
 +==========================+
-+      UpClooContents      +         
++      UpClooContents      +
 +==========================+
 +    your_content_id_1     +
 +--------------------------+
@@ -241,7 +241,7 @@ $manager->useStorage(dirname(__FILE__) . '/system/dbs/upcloo.sqlite');</pre>
 +--------------------------+
 +    your_content_id_3     +
 +--------------------------+</pre>
-                <p><strong><a href="/sdk/php/local-storage.html">See here</a></strong> for more 
+                <p><strong><a href="/sdk/php/local-storage.html">See here</a></strong> for more
                     details around this component.</p>
             </div>
         </div>
@@ -273,7 +273,7 @@ $results = $manager->get($searchQuery);</pre>
                 </p>
                 <h3>Complex queries</h3>
                 <p>
-                    Search queries works chaining objects. You can start a new query 
+                    Search queries works chaining objects. You can start a new query
                     using <code>search()</code> method.
                 </p>
                 <pre class="prettyprint linenums">
@@ -289,17 +289,17 @@ $searchQuery = $manager->search()
 $results = $manager->get($searchQuery);</pre>
                 <h4>Query</h4>
                 <p>
-                    The query is what you want to search, it could be a sentence 
+                    The query is what you want to search, it could be a sentence
                     or simple a word but not empty.
                 </p>
                 <h4>Relevancy</h4>
                 <p>
-                    Relevancy is the boost operator that indicates that this query 
-                    must works with a relevancy on a particular rule. Possible 
+                    Relevancy is the boost operator that indicates that this query
+                    must works with a relevancy on a particular rule. Possible
                     values actually are only: date and default.
                 </p>
                 <ul>
-                    <li>Date indicates that are better new contents (using 
+                    <li>Date indicates that are better new contents (using
                     <code>publish_date</code> field)</li>
                     <li>Default for a natural query execution.</li>
                 </ul>
@@ -312,7 +312,7 @@ $results = $manager->get($searchQuery);</pre>
                 </p>
                 <h4>Filter By</h4>
                 <p>
-                    This method indicates that you want to reduce your result set. You 
+                    This method indicates that you want to reduce your result set. You
                     can chain this operator.
                 </p>
                 <pre class="prettyprint linenums">
@@ -325,34 +325,34 @@ $search->filterBy("category", "news")->filterBy("author", "Name Surname");</pre>
 $search->facet("category")->facet("author");</pre>
                 <h4>Network</h4>
                 <p>
-                    If you have a network of sites that you query not only your 
-                    repository but involves other partner indexes for having more 
+                    If you have a network of sites that you query not only your
+                    repository but involves other partner indexes for having more
                     results. You can chain this operator.
                 </p>
                 <pre class="prettyprint linenums">
 $search->network("first")->network("second");</pre>
                 <p>
-                    Is not useful including your sitekey because the sistem involve 
+                    Is not useful including your sitekey because the sistem involve
                     it by itself.
                 </p>
                 <h4>Ranges</h4>
                 <p>
-                    Range queries is a group and count with filter. It's a complex 
-                    query. When you are asking for a range query the system filter 
-                    results automatically on your range, after that group and 
-                    counting elements into each group. That's enabled your software 
+                    Range queries is a group and count with filter. It's a complex
+                    query. When you are asking for a range query the system filter
+                    results automatically on your range, after that group and
+                    counting elements into each group. That's enabled your software
                     for move users into a fine grain searching system.
                 </p>
                 <p>
                     Here the range method prototype
                 </p>
                 <pre class="prettyprint linenums">
-public function range($type=self::RANGE_DATE, 
-            $field="publish_date", 
-            $gap="1", 
-            $direction=self::DIRECTION_FORWARD, 
-            $from="1900-01-01T00:00:00Z", 
-            $to=self::NOW, 
+public function range($type=self::RANGE_DATE,
+            $field="publish_date",
+            $gap="1",
+            $direction=self::DIRECTION_FORWARD,
+            $from="1900-01-01T00:00:00Z",
+            $to=self::NOW,
             $value=self::RANGE_DATE_YEAR);</pre>
                 <p>
                     Using into a call

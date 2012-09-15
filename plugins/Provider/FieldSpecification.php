@@ -1,7 +1,7 @@
-<?php 
+<?php
 namespace PhroznPlugin\Provider;
 
-class FieldSpecification 
+class FieldSpecification
     extends \Phrozn\Provider\Base
     implements \Phrozn\Provider
 {
@@ -20,7 +20,7 @@ class FieldSpecification
             'name' => 'Title',
             'syntax' => 'title',
             'usage' => 'optional',
-            'description' => 'This field represent your content title, 
+            'description' => 'This field represent your content title,
                 this field is tipically used for computing correlation.',
             'type' => 'general string',
             'notes' => 'You can set any string without any limit if not the minimun length is one character.',
@@ -84,7 +84,7 @@ class FieldSpecification
             'multiplicity' => 'one time'
         ),
     );
-    
+
     public function get()
     {
         $config = $this->getConfig();

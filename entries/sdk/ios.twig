@@ -2,11 +2,11 @@ providers:
     sdk:
         provider: Sdk
         platform: ios
-        issues: https://api.github.com/repos/corley/upcloo-ios-sdk/issues
+        issues: https://api.github.com/repos/upcloo/upcloo-ios-sdk/issues
     commits:
         provider: Commit
-        api: https://api.github.com/repos/corley/upcloo-ios-sdk/commits
-        repo: https://github.com/corley/upcloo-ios-sdk
+        api: https://api.github.com/repos/upcloo/upcloo-ios-sdk/commits
+        repo: https://github.com/upcloo/upcloo-ios-sdk
 ---
 <div class="content">
     <section>
@@ -43,19 +43,19 @@ providers:
     				<li>Load static library</li>
     			</ul>
     			<p>
-    				The first method is pretty simple, copy all <code>.h</code> and <code>.c</code> 
+    				The first method is pretty simple, copy all <code>.h</code> and <code>.c</code>
     				files into your project and use it.
     			</p>
     			<p>
-    				The second one is simple as well, move the <code>.a</code> into your framework 
+    				The second one is simple as well, move the <code>.a</code> into your framework
     				group and move only <code>.h</code> header files into your project.
     			</p>
     			<p>That's it no big deal!</p>
     			<h3>Compile with ARC support</h3>
     			<p>
-    				In order to compile the library into a project with ARC support you have to 
-    				remove this one from UpCloo library. For do that simply open BuildPhases tab 
-    				under main project settings and for all UpCloo's files add <code>-fno-objc-arc</code> 
+    				In order to compile the library into a project with ARC support you have to
+    				remove this one from UpCloo library. For do that simply open BuildPhases tab
+    				under main project settings and for all UpCloo's files add <code>-fno-objc-arc</code>
     				property on <code>Compile Source</code> section.
     			</p>
     			<h2>Example of usage</h2>
@@ -75,24 +75,24 @@ upcloo.sitekey = @"my-sitekey";
 //password is useless for only-get apps
 upcloo.password = @"my-password";</pre>
 				<p>
-					If you prefere you can use <code>setCredential()</code> method instead 
+					If you prefere you can use <code>setCredential()</code> method instead
 					property setting.
 				</p>
 				<pre class="prettyprint linenums">
 [sharedManager setCredential: @"my-sitekey", @"my-password"];</pre>
 				<h2>Using the SDK for getting documents</h2>
 				<p>
-					UpCloo SDK use delegates for send messages asyncronously to your application. 
-					When you ask for a document (using get method), UpCloo SDK detach threads for 
-					process your request and only when the message is ready or error is returned 
+					UpCloo SDK use delegates for send messages asyncronously to your application.
+					When you ask for a document (using get method), UpCloo SDK detach threads for
+					process your request and only when the message is ready or error is returned
 					call a delegate method.
 				</p>
 				<p>
-					Actually only two callback methods are available, one for all goes ok and one 
+					Actually only two callback methods are available, one for all goes ok and one
 					for show an error message.
 				</p>
 				<p>
-					Definition of callbacks are into <code>UpClooGetDelegate</code> protocol definition. 
+					Definition of callbacks are into <code>UpClooGetDelegate</code> protocol definition.
 					For using you have to implements it at your controller and implements methods.
 				</p>
 				<pre class="prettyprint linenums">
@@ -106,7 +106,7 @@ upcloo.password = @"my-password";</pre>
 
 ...
 
-- (void)upclooContentsReady:(UpClooDocuments *)documents 
+- (void)upclooContentsReady:(UpClooDocuments *)documents
 {
     //Documents are available
 }
@@ -117,8 +117,8 @@ upcloo.password = @"my-password";</pre>
 }</pre>
 				<h3>Documents structure (Get)</h3>
 				<p>
-					Documents are divided into two containers: <code>UpClooDocuments</code> and 
-					<code>UpClooDocument</code>. First type encapsulate the second one using an NSArray 
+					Documents are divided into two containers: <code>UpClooDocuments</code> and
+					<code>UpClooDocument</code>. First type encapsulate the second one using an NSArray
 					structure.
 				</p>
 				<p>
@@ -133,11 +133,11 @@ for (i=0; i&lt;documents.documents.count; i++) {
 }</pre>
 				<h2>Using SDK for posting documents (create/update)</h2>
 				<p>
-					Posting new documents or update olds you have to follow a similar flow as used 
+					Posting new documents or update olds you have to follow a similar flow as used
 					during get flow.
 				</p>
 				<p>
-					First of all you have to fill a new <code>UpClooModelDocument</code> and request the 
+					First of all you have to fill a new <code>UpClooModelDocument</code> and request the
 					indexing on <code>UpClooManager</code> shared manager. See it on an example:
 				</p>
 				<pre class="prettyprint linenums">
@@ -149,19 +149,19 @@ model.content = @"This is the summary";
 
 [[UpClooManager sharedManager] postContent: model];</pre>
 				<p>
-					Calls are async as get calls. If you want you can register a delegate and listen 
-					for events. Two events are available: error, valid post content. For listen 
+					Calls are async as get calls. If you want you can register a delegate and listen
+					for events. Two events are available: error, valid post content. For listen
 					thoose events you have to implement the <code>UpClooPutDelegate</code> protocol.
 				</p>
 				<p>
 					That protocol have two methods: <code>- (void)upclooUnableToPutThisContentWithMessage:(NSString *)message;</code>
-					that is called when an error occur or the method: 
-					<code>- (void)upclooPutCompleted;</code>. The last one is optional and that you 
+					that is called when an error occur or the method:
+					<code>- (void)upclooPutCompleted;</code>. The last one is optional and that you
 					can never implement this one.
 				</p>
 				<h3>Post/Put delegate</h3>
 				<p>
-					For post/put new contents or updates old ones, you have to register a delegate 
+					For post/put new contents or updates old ones, you have to register a delegate
 					for post/put operation.
 				</p>
 				<pre class="prettyprint linenums">
