@@ -1,38 +1,46 @@
 <div class="content">
     <div class="row">
         <div class="span12">
-            <h1>Getting Started UpCloo Correlation</h1>
+            <h1>UpCloo advanced features</h1>
             <p>
-                Integrating UpCloo services is very simple, first of all select
-                an integration strategy using an available SDK or using raw XMLs.
-            </p>
-            <p>
-                After that you have to follow this steps:
+                UpCloo provides advanced features.
             </p>
             <ul>
-                <li>
-                    Add comment tags for the <a href="/tools/remote-importer.html">UpCloo Remote Importer</a>
+                <li>Channels
                     <ul>
-                        <li>
-                            This particular importer creates for you the initial index and a valid
-                            set of correlation. Tipically is more simple to append UpCloo meta tags
-                            instead require a lot of indexes using the SDK directly.
-                        </li>
+                        <li>In order to group type of content together</li>
                     </ul>
                 </li>
-                <li>
-                    When the importer ends it work you have the initial index. You can try the index created
-                    requesting for some correaltion using the <code>get()</code> method.
-                </li>
-                <li>
-                    Using your <code>index()</code> method for adding and updating your index on a new
-                    content or if you want to update one existing content.
-                </li>
+            </ul>
+            <h2>What means channel?</h2>
+            <p>
+            A channel is a sort of selector that can group information together.
+            </p>
+            <p>
+            In order to enable this feature you need to add into pages that you want to
+            group a meta element. The prototype is:
+            </p>
+            <pre class="prettyprint linenums">&lt;meta property="upcloo:channel" content="your-channel-name" /&gt;</pre>
+            <p>
+            The meta name should be "upcloo:channel" and the "content" property should be
+            your personal group identifier.
+            </p>
+            <p>
+            Suppose that you have three types of content.
+            </p>
+            <ul>
+                <li>news</li>
+                <li>review</li>
+                <li>page</li>
             </ul>
             <p>
-                That's all it is. You can try the <code>get()</code> operation during the index generation
-                as well as waiting that the importer ends but probably results are quite strange.
+            You have just to add in all your news pages one meta like this
             </p>
+            <pre class="prettyprint linenums">&lt;meta property="upcloo:channel" content="news" /&gt;</pre>
+            <p>In your reviews</p>
+            <pre class="prettyprint linenums">&lt;meta property="upcloo:channel" content="review" /&gt;</pre>
+            <p>In your pages</p>
+            <pre class="prettyprint linenums">&lt;meta property="upcloo:channel" content="page" /&gt;</pre>
         </div>
     </div>
 </div>
