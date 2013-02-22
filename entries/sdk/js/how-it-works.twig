@@ -1,0 +1,61 @@
+<div class="content">
+    <section>
+    <div class="row">
+        <div class="span12">
+            <h2>How the snippet works</h2>
+            <p>The UpCloo JS SDK is composed by two parts</p>
+<pre class="prettyprint linenums">
+&lt;div class='upcloo-widget' id="upcloo_1000"&gt;&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+(function(g,d,id){
+  upCloo = g.upCloo || [];
+  upCloo.push(
+    {
+        "permalink" : "http://your-domain.tld/your-permalink/a-page.html",
+        "siteKey" : "your-sitekey"
+    }
+  );
+  var s = d.createElement('script') , n = d.getElementsByTagName('script')[0];
+  s.type = 'text/javascript';
+  s.async = true;s.id = id;
+  s.src = '//r.upcloo.com/a/a.js';
+  !d.getElementById(id) ? n.parentNode.insertBefore(s,n) :false;
+})(this,document,'upcloo_js_sdk')
+&lt;/script&gt;</pre>
+
+            <p>The first part is the HTML placeholder that contains
+            the "inline" UpCloo results</p>
+
+<pre class="prettyprint linenums">
+&lt;div class='upcloo-widget' id="upcloo_1000"&gt;&lt;/div&gt;</pre>
+
+            <p>In practice the container is marked by two attributes, one
+            is <code>class</code> that is useful to "over-style" the box and another
+            one is the <code>id</code>.<br/>
+            The <code>id</code> field is linked with your reserved area and used
+            to download your preferences in order to style the box with your
+            settings.</p>
+
+            <p>The second part is the real UpCloo JS SDK.</p>
+
+        <pre class="prettyprint linenums">
+&lt;script type="text/javascript"&gt;
+(function(g,d,id){
+  upCloo = g.upCloo || [];
+  upCloo.push(
+    {
+        "permalink" : "http://your-domain.tld/your-permalink/a-page.html",
+        "siteKey" : "your-sitekey"
+    }
+  );
+  var s = d.createElement('script') , n = d.getElementsByTagName('script')[0];
+  s.type = 'text/javascript';
+  s.async = true;s.id = id;
+  s.src = '//r.upcloo.com/a/a.js';
+  !d.getElementById(id) ? n.parentNode.insertBefore(s,n) :false;
+})(this,document,'upcloo_js_sdk')
+&lt;/script&gt;</pre>
+
+    </div>
+    </section>
+</div>
