@@ -1,0 +1,45 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>Caching using Zend Framework (1.12.*)</h1>
+            <p>We will use `Zend_Cache` in order to provide the cache layer.</p>
+            <pre class="prettyprint linenums">
+class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+{
+    protected function _initUpcloo()
+    {
+        // (1) Create an UpCloo instance and configure it.
+        $upcloo = new UpCloo_Manager();
+        $upcloo-&gt;setCredential("it-xx00XXxxx");
+
+        // (2) Configure a proxy-cache strategy
+        $cachedUpCloo = Zend_Cache::factory(
+            'Class',
+            'Apc',
+            array('cached_entity' =&gt; $upcloo)
+        );
+
+        // (2') Return an UpCloo instance (the proxy)
+        return $cachedUpCloo;
+    }
+}</pre>
+            <p>As you can see now in your controller you can ask for UpCloo
+            result and the proxy will cache results transparently.</p>
+            <pre class="prettyprint linenums">
+class IndexController extends Zend_Controller_Action
+{
+    public function contentAction()
+    {
+        // (2'') Retrive the UpCloo instance
+        $upcloo = $this-&gt;getInvokeArg("bootstrap")-&gt;getResource("upcloo");
+
+        // (3) Use UpCloo normally
+        $this-&gt;view-&gt;semanticRelatedContent = $upcloo-&gt;get(/** Put here your page absolute address*/);
+    }
+}</pre>
+            <p>Using proxy method allows you to disable the caching layer or
+            working with more components without change your business logic.</p>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,35 @@
+<div class="content">
+    <div class="row">
+        <div class="span12">
+            <h1>Caching using proxy methods</h1>
+            <p>If you plan to use UpCloo using a server side SDK you want
+            probably add a caching layer.</p>
+            <p>Tipically when you add a caching strategy you apply something
+            like this:</p>
+            <pre class="prettyprint linenums">
+if ((data = cache.load(mykey)) != null) {
+   // engage a slower call
+}</pre>
+            <p>We suggest to do something slightly different that allows
+            you to achieve the same result but using a more clear strategy.</p>
+            <p>The proxy pattern allows you to add cache layers in an easier
+            way.</p>
+            <pre class="prettyprint linenums">
+// (1) Create an UpCloo manager
+anUpClooInstance = /** Create the UpCloo instance */
+anUpClooInstance.setSitekey("en-xx00XXxxx");
+
+// (2) Configure proxy caching
+CacheProxy a = new CacheProxy(anUpClooInstance);
+a.setCacheOption(/** A list of cache options... lifetime, etc. */);
+
+// (3) Use UpCloo normally
+a.get("http://yourdomain.tld/a/b/page.html");</pre>
+            <p>As you can see the (1) bootstrap normally the UpCloo library.
+            (2) Create the proxy caching layer and in your application you
+            can use (3) normally UpCloo.</p>
+            <p>See a more detailed example in our
+            <a href="/sdk/php/proxy-cache-zf1.html">PHP example</a></p>
+        </div>
+    </div>
+</div>

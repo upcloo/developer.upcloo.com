@@ -63,12 +63,7 @@ require_once 'path/to/UpCloo/Autoloader.php';</pre>
                 </p>
                 <pre class="prettyprint linenums">
 $autoloader = Zend_Loader_Autoloader::getInstance();
-$autoloader->registerNamespace("UpCloo_");</pre>
-                <p>
-                    UpCloo SDK provides a section dedicated to
-                    <a href="/sdk/php/zf.html">Zend Framework</a>
-                    for simplify the integration process.
-                </p>
+$autoloader-&gt;registerNamespace("UpCloo_");</pre>
                 <h3>Setting up your credentials</h3>
                 <p>
                     UpCloo SDKs is designed on Singleton pattern, for
@@ -76,7 +71,7 @@ $autoloader->registerNamespace("UpCloo_");</pre>
                 </p>
                 <pre class="prettyprint linenums">
 $manager = UpCloo_Manager::getInstance();
-$manager->setCredential("it-xx00XXxxx");</pre>
+$manager-&gt;setCredential("it-xx00XXxxx");</pre>
                 <p>
                     The <code>$manager</code> variable contains a valid
                     UpCloo instance.
@@ -102,6 +97,17 @@ $correlations = $manager-&gt;get("content-id");</pre>
                 <pre class="prettyprint linenums">
 $correlations = $manager-&gt;get("content-id", "vsitekey");</pre>
             </div>
+        </div>
+        <div class="span12">
+            <h3>What about caching?</h3>
+            <p>UpCloo is designed to be fast but you are always able to
+            cache results by your self, here is a list of useful examples:</p>
+            <ul>
+                <li><span class="label label-info">General
+                    Documentation</span> <a href="/documentation/best-practice/simple-proxy.html">
+                    Cache using proxy methods</a></li>
+                <li><a href="/sdk/php/proxy-cache-zf1.html">Zend Framework (1.12.*) use of Object Cache</a></li>
+            </ul>
         </div>
     </section>
 </div>
